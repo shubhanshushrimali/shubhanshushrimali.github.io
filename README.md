@@ -1,118 +1,60 @@
 <div align="center">
 
-# 🚀 shubhanshushrimali.github.io
+# 🚀 Shubhanshu Shrimali — Portfolio
 
-### My Personal Portfolio
+### AI-Native Systems & Game Engineer
 
-A premium, animated developer portfolio built with **React**, **Three.js**, and **Framer Motion**.  
-Auto-deployed to GitHub Pages via **GitHub Actions** on every push.
+**2+ years shipping production games and apps to 300K+ users with Top 10 genre rankings on both App Store & Google Play.**
 
-[![Deploy](https://github.com/shubhanshushrimali/shubhanshushrimali.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/shubhanshushrimali/shubhanshushrimali.github.io/actions/workflows/deploy.yml)
-[![Live](https://img.shields.io/badge/🌐_Live-shubhanshushrimali.github.io-a78bfa?style=flat-square)](https://shubhanshushrimali.github.io)
+[![Deploy to GitHub Pages](https://github.com/shubhanshushrimali/shubhanshushrimali.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/shubhanshushrimali/shubhanshushrimali.github.io/actions/workflows/deploy.yml)
+[![Live Site](https://img.shields.io/badge/🌐_Live_Site-shubhanshushrimali.github.io-00f0ff?style=for-the-badge)](https://shubhanshushrimali.github.io)
 
 </div>
 
 ---
 
-## ✨ Features
+## ⚡ Core Specializations
 
-- 🎨 **Premium Dark Theme** — Glassmorphism cards, vibrant gradients, custom scrollbar
-- 🌌 **3D Particle Background** — 1500+ animated particles with floating orbs (Three.js + React Three Fiber)
-- ⚡ **Buttery Smooth Animations** — Scroll-triggered reveals, hover effects, typewriter text (Framer Motion)
-- 📱 **Fully Responsive** — Looks great on mobile, tablet, and desktop
-- 🔍 **SEO Optimized** — Open Graph, Twitter Cards, semantic HTML, meta tags
-- 🚀 **Auto-Deploy** — Push to `main` → GitHub Actions builds → Live on GitHub Pages
-- ♿ **Accessible** — Respects `prefers-reduced-motion`, ARIA labels, semantic structure
+- 🧠 **Autonomous AI & Multi-Agent Graphs** — LangGraph cyclic graphs, 24/7 daemon loops, Model Context Protocol (MCP), LangSmith automated eval harnesses with LLM-as-a-judge CI/CD gates.
+- ⚡ **LLM Infrastructure & Distillation** — Self-hosted vLLM inference on RunPod/Vast.ai with speculative decoding & prompt caching; continuous QLoRA/PEFT dataset distillation.
+- 🎮 **Game Engines & Real-Time Graphics** — Custom C++/Vulkan game engine (*Eisen Engine*), Unreal Engine 5 (C++, GAS, Niagara), Unity (DOTS/ECS), authoritative headless servers on AWS with lag compensation.
+- 📈 **Scale, Monetization & Rollouts** — 300K+ users scaled, Top 10 genre ranking, Firebase Analytics, Remote Config A/B testing, ad mediation (AdMob/AppLovin), Fastlane & GitHub Actions CI/CD.
 
-## 🛠️ Tech Stack
+---
 
-| Category | Technologies |
+## 🎮 Flagship Projects
+
+1. **[Eisen Engine](https://github.com/shubhanshushrimali/Eisen-Engine)** — Custom AI-Native C++ Game Engine with Vulkan/OpenGL rendering, custom memory allocators, ECS, and runtime LLM agent hooks.
+2. **Open-World 64-Player Multiplayer RPG** — Unreal Engine 5 (C++), Gameplay Ability System (GAS), Niagara VFX, AWS EC2 dedicated authoritative servers.
+3. **Autonomous AI Research & Distillation Agents** — 24/7 LangGraph & MCP agents extracting reasoning traces for continuous QLoRA fine-tuning.
+4. **AI-Powered Technical Publishing Platform** — Autonomous research & drafting agents syncing with DEV.to and Medium APIs.
+
+---
+
+## 🛠️ Tech Stack Matrix
+
+| Domain | Technologies |
 |---|---|
-| **Framework** | React 19 + Vite 8 |
-| **3D Graphics** | Three.js, React Three Fiber, Drei |
-| **Animations** | Framer Motion, GSAP |
-| **Icons** | React Icons (Feather) |
-| **Styling** | Vanilla CSS with custom design system |
-| **Fonts** | Inter, Space Grotesk, JetBrains Mono |
-| **CI/CD** | GitHub Actions |
-| **Hosting** | GitHub Pages |
+| **Languages** | C, C++, C#, Python, Dart, Swift, TypeScript, JavaScript |
+| **AI / Agents** | LangGraph, MCP, vLLM, QLoRA, LoRA, Outlines, LangSmith, RunPod, Vast.ai |
+| **Engines & VFX** | Unreal Engine 5 (GAS), Unity (DOTS/ECS), Custom C++ Engine, Vulkan, OpenGL, GLSL, HLSL, Niagara |
+| **Networking & Cloud**| AWS EC2 Dedicated Game Servers, Mirror Networking, Docker, FastAPI, Node.js |
+| **Platforms & CI/CD** | Xcode, Android Studio, TestFlight, Play Console, Fastlane, GitHub Actions, Linux |
 
-## 📂 Project Structure
+---
 
-```
-src/
-├── components/
-│   ├── ParticleCanvas.jsx    # Three.js 3D particle background
-│   ├── Navbar.jsx            # Animated navigation with scroll detection
-│   ├── Hero.jsx              # Hero section with typewriter effect
-│   ├── About.jsx             # About me + animated skill grid
-│   ├── Projects.jsx          # Featured projects with code preview
-│   ├── Experience.jsx        # Work timeline with scroll animations
-│   ├── Contact.jsx           # Contact form + social links
-│   └── Footer.jsx            # Footer with heartbeat animation
-├── App.jsx                   # Main app layout
-├── main.jsx                  # React entry point
-└── index.css                 # Design system (colors, typography, utilities)
-```
+## 📬 Contact & Networks
 
-## 🚀 Getting Started
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) v18+
-- npm
-
-### Development
-
-```bash
-# Clone the repo
-git clone git@github.com:shubhanshushrimali/shubhanshushrimali.github.io.git
-cd shubhanshushrimali.github.io
-
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) to view it.
-
-### Production Build
-
-```bash
-npm run build
-npm run preview   # Preview the production build locally
-```
-
-## 🔄 CI/CD Pipeline
-
-Every push to `main` triggers the GitHub Actions workflow:
-
-```
-Push to main → Install deps → Vite build → Deploy to GitHub Pages
-```
-
-The workflow is defined in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
-
-## 📄 Sections
-
-| # | Section | Description |
-|---|---|---|
-| 01 | **About** | Bio, stats, and animated tech stack grid |
-| 02 | **Projects** | Featured project (Eisen Engine) with live code preview |
-| 03 | **Experience** | Work history timeline with scroll animations |
-| 04 | **Contact** | Contact form and social links |
-
-## 🎮 Featured Project: Eisen Engine
-
-> A custom C++ game engine built from scratch with OpenGL — featuring ECS architecture, event-driven systems, batch rendering, and ImGui debug tools.
-
-🔗 [View Eisen Engine →](https://github.com/shubhanshushrimali/Eisen-Engine)
+- **Location**: Udaipur, Rajasthan, India
+- **Email**: [shubhanshu200425@gmail.com](mailto:shubhanshu200425@gmail.com)
+- **Phone**: +91-8290529725
+- **GitHub**: [@shubhanshushrimali](https://github.com/shubhanshushrimali)
+- **LinkedIn**: [in/shubhanshushrimali](https://linkedin.com/in/shubhanshushrimali)
+- **DEV.to**: [shubhanshu_shrimali](https://dev.to/shubhanshu_shrimali)
+- **Medium**: [@shubhanshu200425](https://medium.com/@shubhanshu200425)
 
 ---
 
 <div align="center">
-
-Built with ❤️ by [Shubhanshu Shrimali](https://github.com/shubhanshushrimali)
-
+Built with React, Three.js & Framer Motion · Auto-deployed via GitHub Actions
 </div>

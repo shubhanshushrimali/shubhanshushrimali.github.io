@@ -1,150 +1,220 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FiMail, FiGithub, FiLinkedin, FiSend, FiMapPin } from 'react-icons/fi'
+import {
+  FiMail,
+  FiGithub,
+  FiLinkedin,
+  FiSend,
+  FiMapPin,
+  FiPhone,
+  FiGlobe,
+  FiTerminal
+} from 'react-icons/fi'
+import { SiMedium, SiDevdotto } from 'react-icons/si'
 import './Contact.css'
 
 export default function Contact() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setSending(true)
-    // Using Formspree for free form handling — replace with your ID
-    try {
-      await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
-      setSent(true)
-      setFormData({ name: '', email: '', message: '' })
-    } catch {
-      alert('Error sending message. Please email me directly!')
-    }
+    
+    // Direct mailto fallback or Formspree
+    const mailtoUrl = `mailto:shubhanshu200425@gmail.com?subject=${encodeURIComponent(
+      formData.subject || 'Engineering Inquiry'
+    )}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`
+    
+    window.location.href = mailtoUrl
+    setSent(true)
     setSending(false)
-  }
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   }
 
   return (
     <section className="contact" id="contact" ref={ref}>
       <div className="container">
+        
+        {/* Header */}
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-number">04. Contact</span>
-          <h2>Get In <span className="gradient-text">Touch</span></h2>
-          <p>Have a project idea, question, or just want to say hi? My inbox is always open.</p>
+          <span className="section-number">04. Contact & Inquiries</span>
+          <h2>Let's Build <span className="gradient-text">Something Extraordinary</span></h2>
+          <p>
+            Open for AI systems architecture, game engine development, high-performance systems engineering, 
+            or consulting on scaling games to hundreds of thousands of active users.
+          </p>
           <div className="section-line" />
         </motion.div>
 
-        <motion.div
-          className="contact__grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
-          {/* Contact Info */}
-          <motion.div className="contact__info" variants={itemVariants}>
-            <div className="contact__info-card glass-card">
-              <FiMail className="contact__info-icon" />
-              <h4>Email</h4>
-              <a href="mailto:shubhanshu200425@gmail.com">shubhanshu200425@gmail.com</a>
-            </div>
+        {/* Contact Matrix */}
+        <div className="contact__grid">
+          
+          {/* Info Side */}
+          <motion.div
+            className="contact__info"
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="contact__info-card glass-card">
               <FiMapPin className="contact__info-icon" />
               <h4>Location</h4>
-              <span>India</span>
+              <span>Udaipur, Rajasthan, India</span>
             </div>
-            <div className="contact__socials">
-              <a href="https://github.com/shubhanshushrimali" target="_blank" rel="noopener noreferrer" className="contact__social-link" aria-label="GitHub">
-                <FiGithub size={20} />
+
+            <div className="contact__info-card glass-card">
+              <FiMail className="contact__info-icon" />
+              <h4>Direct Email</h4>
+              <a href="mailto:shubhanshu200425@gmail.com" className="mono">
+                shubhanshu200425@gmail.com
               </a>
-              <a href="https://linkedin.com/in/shubhanshushrimali" target="_blank" rel="noopener noreferrer" className="contact__social-link" aria-label="LinkedIn">
-                <FiLinkedin size={20} />
+            </div>
+
+            <div className="contact__info-card glass-card">
+              <FiPhone className="contact__info-icon" />
+              <h4>Direct Phone</h4>
+              <a href="tel:+918290529725" className="mono">
+                +91-8290529725
               </a>
-              <a href="mailto:shubhanshu200425@gmail.com" className="contact__social-link" aria-label="Email">
-                <FiMail size={20} />
-              </a>
+            </div>
+
+            {/* Social Grid */}
+            <div className="contact__socials-box glass-card">
+              <h4>Engineering Networks</h4>
+              <div className="contact__social-links">
+                <a
+                  href="https://github.com/shubhanshushrimali"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact__social-btn"
+                  title="GitHub"
+                >
+                  <FiGithub />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/shubhanshushrimali"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact__social-btn"
+                  title="LinkedIn"
+                >
+                  <FiLinkedin />
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  href="https://dev.to/shubhanshu_shrimali"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact__social-btn"
+                  title="DEV.to"
+                >
+                  <SiDevdotto />
+                  <span>DEV.to</span>
+                </a>
+                <a
+                  href="https://medium.com/@shubhanshu200425"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact__social-btn"
+                  title="Medium"
+                >
+                  <SiMedium />
+                  <span>Medium</span>
+                </a>
+              </div>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Form Side */}
           <motion.form
             className="contact__form glass-card"
-            variants={itemVariants}
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
             onSubmit={handleSubmit}
           >
+            <div className="contact__form-header">
+              <FiTerminal className="contact__form-icon" />
+              <h3 className="font-heading">Dispatch Direct Message</h3>
+            </div>
+
             {sent ? (
               <div className="contact__success">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 200 }}
-                >
-                  <span className="contact__success-emoji">🎉</span>
-                  <h3>Message Sent!</h3>
-                  <p>Thanks for reaching out. I'll get back to you soon!</p>
-                </motion.div>
+                <span className="contact__success-emoji">🚀</span>
+                <h3>Transmission Initiated!</h3>
+                <p>Your default email client opened with the pre-filled dispatch to shubhanshu200425@gmail.com.</p>
               </div>
             ) : (
               <>
                 <div className="contact__field">
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="name" className="mono">&gt; sender_name</label>
                   <input
                     id="name"
                     type="text"
-                    placeholder="Your name"
+                    placeholder="Your Name / Studio"
                     value={formData.name}
-                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
                   />
                 </div>
+
                 <div className="contact__field">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email" className="mono">&gt; return_email</label>
                   <input
                     id="email"
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder="your.email@organization.com"
                     value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
                   />
                 </div>
+
                 <div className="contact__field">
-                  <label htmlFor="message">Message</label>
+                  <label htmlFor="subject" className="mono">&gt; subject_inquiry</label>
+                  <input
+                    id="subject"
+                    type="text"
+                    placeholder="AI Systems / Game Dev / Full-Time Role"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    required
+                  />
+                </div>
+
+                <div className="contact__field">
+                  <label htmlFor="message" className="mono">&gt; message_payload</label>
                   <textarea
                     id="message"
-                    placeholder="What's on your mind?"
                     rows={5}
+                    placeholder="Describe your technical inquiry, project scope, or opportunity..."
                     value={formData.message}
-                    onChange={e => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
                   />
                 </div>
+
                 <button type="submit" className="btn btn-primary contact__submit" disabled={sending}>
-                  {sending ? 'Sending...' : 'Send Message'}
                   <FiSend />
+                  <span>{sending ? 'Sending...' : 'Transmit Message'}</span>
                 </button>
               </>
             )}
           </motion.form>
-        </motion.div>
+
+        </div>
+
       </div>
     </section>
   )
