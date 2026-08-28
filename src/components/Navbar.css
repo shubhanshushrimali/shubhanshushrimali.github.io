@@ -5,36 +5,41 @@
   right: 0;
   z-index: 100;
   padding: 1.2rem 0;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s var(--ease-expo);
 }
 
 .navbar--scrolled {
-  padding: 0.8rem 0;
-  background: rgba(10, 10, 15, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 0;
+  background: rgba(5, 5, 10, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.navbar--overclock {
+  border-bottom: 1px solid var(--neon-cyan) !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.25) !important;
 }
 
 .navbar__container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 3rem);
+  padding: 0 clamp(1rem, 5vw, 3.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .navbar__logo {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.35rem;
+  font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
 .navbar__logo-bracket {
-  color: var(--accent-purple);
+  color: var(--neon-cyan);
 }
 
 .navbar__links {
@@ -45,10 +50,11 @@
 
 .navbar__link {
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
   transition: color 0.3s ease;
   position: relative;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .navbar__link::after {
@@ -58,9 +64,10 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gradient-primary);
+  background: var(--gradient-cyber);
   border-radius: 1px;
   transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
 }
 
 .navbar__link:hover,
@@ -74,15 +81,62 @@
 }
 
 .navbar__link-number {
-  font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: var(--accent-purple);
-  margin-right: 0.3rem;
+  color: var(--neon-cyan);
+  margin-right: 0.35rem;
+}
+
+/* Right Actions (Audio, CMD, Resume) */
+.navbar__right-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.navbar__action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navbar__action-btn:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+
+.navbar__action-btn--active {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: var(--neon-emerald) !important;
+  color: var(--neon-emerald) !important;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.navbar__cmd-btn {
+  background: rgba(0, 240, 255, 0.05);
+  border-color: rgba(0, 240, 255, 0.25);
+}
+
+.cmd-badge {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  color: var(--text-muted);
 }
 
 .navbar__resume-btn {
-  padding: 0.5rem 1.2rem;
-  font-size: 0.85rem;
+  padding: 0.45rem 1.2rem !important;
+  font-size: 0.82rem !important;
+  border-radius: var(--radius-sm) !important;
 }
 
 .navbar__mobile-toggle {
@@ -91,41 +145,50 @@
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.4rem;
 }
 
 .navbar__mobile-menu {
   display: none;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
-  background: rgba(10, 10, 15, 0.95);
-  backdrop-filter: blur(20px);
+  padding: 1.8rem;
+  background: rgba(5, 5, 10, 0.98);
+  backdrop-filter: blur(24px);
   border-top: 1px solid var(--glass-border);
-  overflow: hidden;
 }
 
 .navbar__mobile-link {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--text-secondary);
   padding: 0.5rem 0;
   transition: color 0.3s;
 }
 
 .navbar__mobile-link:hover {
-  color: var(--accent-purple);
+  color: var(--neon-cyan);
+}
+
+.navbar__mobile-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+@media (max-width: 900px) {
+  .btn-label-text, .cmd-badge {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
   .navbar__links {
     display: none;
   }
-
   .navbar__mobile-toggle {
     display: block;
   }
-
   .navbar__mobile-menu {
     display: flex;
   }

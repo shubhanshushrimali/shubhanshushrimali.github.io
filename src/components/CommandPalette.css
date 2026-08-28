@@ -1,0 +1,212 @@
+.cmd-palette-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(3, 4, 8, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.cmd-palette {
+  width: 100%;
+  max-width: 780px;
+  background: rgba(10, 12, 24, 0.95) !important;
+  border: 1px solid rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(0, 240, 255, 0.15) !important;
+  padding: 1.6rem !important;
+  border-radius: var(--radius-lg) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 85vh;
+}
+
+.cmd-palette__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.cmd-palette__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--neon-cyan);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.cmd-palette__icon {
+  font-size: 1.1rem;
+}
+
+.cmd-palette__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.cmd-palette__kbd {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--glass-border);
+}
+
+.cmd-palette__close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.cmd-palette__close:hover {
+  color: var(--text-primary);
+}
+
+.cmd-palette__quick {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.cmd-quick-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cmd-quick-pill:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  transform: translateY(-1px);
+}
+
+.cmd-quick-pill--accent {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: var(--neon-amber);
+}
+
+.cmd-quick-pill--accent:hover {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: var(--neon-amber);
+}
+
+.cmd-palette__terminal {
+  background: rgba(3, 4, 8, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem;
+  height: 240px;
+  overflow-y: auto;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.terminal-line pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-line--system {
+  color: var(--neon-cyan);
+  opacity: 0.9;
+}
+
+.terminal-line--input {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.terminal-line--output {
+  color: var(--text-secondary);
+}
+
+.terminal-line--success {
+  color: var(--neon-emerald);
+  font-weight: 600;
+}
+
+.terminal-line--error {
+  color: #f87171;
+}
+
+.cmd-palette__input-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(5, 7, 14, 0.9);
+  border: 1px solid var(--neon-cyan);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+.cmd-prompt {
+  color: var(--neon-cyan);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.cmd-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.cmd-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.cmd-enter-btn {
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--neon-cyan);
+  border-radius: 4px;
+  color: var(--neon-cyan);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cmd-enter-btn:hover {
+  background: var(--neon-cyan);
+  color: #000;
+}

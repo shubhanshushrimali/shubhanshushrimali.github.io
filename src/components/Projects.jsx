@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import {
@@ -8,54 +9,35 @@ import {
   FiLayers,
   FiServer,
   FiBookOpen,
-  FiCheck
+  FiCheck,
+  FiActivity
 } from 'react-icons/fi'
+import EisenEngineViewport from './EisenEngineViewport'
+import AgentGraphVisualizer from './AgentGraphVisualizer'
+import { soundFX } from '../utils/audio'
 import './Projects.css'
 
 const majorProjects = [
   {
     id: 'eisen',
     title: 'Eisen Engine — AI-Native C++ Game Engine',
-    subtitle: 'Custom Engine Architecture & Vulkan Rendering',
+    subtitle: 'Custom Engine Architecture & Vulkan Multi-Backend RHI',
     year: '2025 – Present',
     featured: true,
     badge: 'Flagship Core Project',
     badgeColor: 'cyan',
     description:
-      'A custom next-generation game engine built from scratch in C/C++. Features Vulkan & OpenGL graphics abstraction, custom memory allocators, cache-friendly Entity-Component-System (ECS), and an AI-native runtime for procedural generation and autonomous LLM agent execution within the game loop.',
+      'A custom next-generation game engine built from scratch in C/C++. Features Vulkan & OpenGL graphics abstraction, custom memory arenas & pool allocators, cache-friendly Entity-Component-System (ECS), and an AI-native runtime for procedural generation and autonomous LLM agent execution within the game loop.',
     highlights: [
-      'Vulkan & OpenGL multi-backend rendering pipeline',
-      'Batch 2D/3D renderer with GLSL shader reflection',
-      'AI-native subsystems for procedural content generation & LLM runtime hooks',
-      'Custom memory arenas & pool allocators minimizing heap fragmentation',
-      'Integrated ImGui debug dockspace & live engine profiling'
+      'Vulkan 1.3 & OpenGL multi-backend rendering pipeline with batch rendering',
+      'AI-native subsystems for procedural content generation & runtime LLM agent hooks',
+      'Custom linear memory arenas & pool allocators minimizing heap fragmentation to 0%',
+      'Integrated ImGui debug dockspace & live engine profiling with GLSL shader reflection'
     ],
     tech: ['C++', 'C', 'Vulkan', 'OpenGL', 'GLSL', 'ECS', 'Custom Allocators', 'Premake', 'ImGui'],
     github: 'https://github.com/shubhanshushrimali/Eisen-Engine',
     live: null,
-    codeSnippet: {
-      filename: 'EisenEngine_Core.cpp',
-      code: `// Eisen AI-Native Engine Loop
-#include <Eisen.h>
-#include <Eisen/AI/AgentRuntime.h>
-
-class SandboxGame : public Eisen::Application {
-public:
-    SandboxGame() {
-        PushLayer(new VulkanRenderLayer());
-        // Initialize Autonomous Procedural AI Layer
-        m_AgentRuntime = Eisen::CreateRef<Eisen::AIAgentGraph>();
-        m_AgentRuntime->BindWorldContext(GetWorldECS());
-    }
-
-    void OnUpdate(Eisen::Timestep ts) override {
-        // High-concurrency batch render & agent tick
-        Eisen::Renderer::BeginScene(m_Camera);
-        m_AgentRuntime->Tick(ts);
-        Eisen::Renderer::EndScene();
-    }
-};`
-    }
+    has3DViewport: true
   },
   {
     id: 'ue5-rpg',
@@ -68,9 +50,9 @@ public:
     description:
       'Massive open-world RPG developed in Unreal Engine 5 with authoritative 64-player dedicated servers hosted on AWS EC2. Built utilizing Gameplay Ability System (GAS) for replicated attributes/spells, AI behavior trees, vehicle physics, and Steamworks authentication.',
     highlights: [
-      'GAS (Gameplay Ability System) replicated combat, attributes & cooldowns',
-      'Authoritative 64-player dedicated server with lag compensation on AWS',
-      'Massive landscape streaming with World Partition & Niagara GPU VFX',
+      'GAS (Gameplay Ability System) replicated combat, attributes & spell cooldowns',
+      'Authoritative 64-player dedicated server with lag compensation & client prediction on AWS',
+      'Massive landscape streaming with World Partition & Niagara GPU compute VFX',
       'Hierarchical AI behavior trees for dynamic open-world creature ecosystems'
     ],
     tech: ['Unreal Engine 5', 'C++', 'GAS', 'Niagara VFX', 'Steamworks', 'AWS EC2', 'Multiplayer'],
@@ -92,7 +74,7 @@ void ARPGCharacter::GrantAbility(TSubclassOf<UGameplayAbility> AbilityClass) {
     title: 'Autonomous AI Research & Distillation Agents',
     subtitle: 'LangGraph Cyclic Graphs & Self-Hosted vLLM Infrastructure',
     year: '2026',
-    featured: false,
+    featured: true,
     badge: 'Autonomous AI',
     badgeColor: 'emerald',
     description:
@@ -102,9 +84,10 @@ void ARPGCharacter::GrantAbility(TSubclassOf<UGameplayAbility> AbilityClass) {
       'Model Context Protocol (MCP) tool server integration for multi-source research',
       'Automated trace extraction pipeline for continuous QLoRA dataset distillation'
     ],
-    tech: ['Python', 'LangGraph', 'MCP', 'vLLM', 'QLoRA / PEFT', 'Docker', 'Vast.ai'],
+    tech: ['Python', 'LangGraph', 'MCP', 'vLLM', 'QLoRA / PEFT', 'Docker', 'Vast.ai', 'RunPod'],
     github: 'https://github.com/shubhanshushrimali',
-    live: null
+    live: null,
+    hasAgentVisualizer: true
   },
   {
     id: 'ai-blog',
@@ -144,8 +127,8 @@ export default function Projects() {
           <span className="section-number">02. Engineering Showcases</span>
           <h2>Featured & <span className="gradient-text">Personal Projects</span></h2>
           <p>
-            From custom C++/Vulkan game engines and 64-player multiplayer servers to autonomous 
-            LangGraph agentic pipelines and vLLM GPU clusters.
+            Interactive 3D engine simulations, 64-player multiplayer netcode, and 
+            autonomous LangGraph agentic pipelines.
           </p>
           <div className="section-line" />
         </motion.div>
@@ -202,6 +185,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-outline"
+                      onClick={() => soundFX.playClick()}
                     >
                       <FiGithub /> Source Code
                     </a>
@@ -212,6 +196,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-primary"
+                      onClick={() => soundFX.playClick()}
                     >
                       <FiExternalLink /> Live Platform
                     </a>
@@ -235,6 +220,20 @@ export default function Projects() {
                   <pre className="terminal-body mono">
                     <code>{project.codeSnippet.code}</code>
                   </pre>
+                </div>
+              )}
+
+              {/* Embedded Eisen Engine 3D Interactive Viewport */}
+              {project.has3DViewport && (
+                <div className="project-featured-card__custom-interactive">
+                  <EisenEngineViewport />
+                </div>
+              )}
+
+              {/* Embedded LangGraph Agent Graph Visualizer */}
+              {project.hasAgentVisualizer && (
+                <div className="project-featured-card__custom-interactive">
+                  <AgentGraphVisualizer />
                 </div>
               )}
             </motion.div>
