@@ -101,9 +101,9 @@
 }
 
 .hero__metric-card {
-  padding: 1.4rem !important;
+  padding: var(--space-5);
   text-align: center;
-  border-radius: var(--radius-md) !important;
+  border-radius: var(--radius-md);
 }
 
 .hero__metric-num {
@@ -193,5 +193,23 @@
   .hero__actions .btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero__name {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+  }
+
+  .hero__greeting {
+    font-size: var(--text-xs);
+  }
+
+  .hero__description {
+    font-size: var(--text-base);
+  }
+
+  .hero__scroll-indicator {
+    display: none;
   }
 }

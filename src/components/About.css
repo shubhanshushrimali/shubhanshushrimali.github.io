@@ -63,7 +63,7 @@
 
 .about__edu-card,
 .about__honors-card {
-  padding: 1.6rem !important;
+  padding: var(--space-6);
 }
 
 .about__side-header {
@@ -145,7 +145,7 @@
 
 /* Core Languages Strip */
 .about__languages-strip {
-  padding: 1.6rem 2.2rem !important;
+  padding: var(--space-6) var(--space-10);
   margin-bottom: 2.5rem;
 }
 
@@ -234,9 +234,9 @@
 }
 
 .about__tab-btn--active {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(168, 85, 247, 0.15)) !important;
-  color: var(--neon-cyan) !important;
-  border-color: var(--neon-cyan) !important;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(168, 85, 247, 0.15));
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
@@ -258,7 +258,7 @@
 }
 
 .about__tab-panel {
-  padding: 2.5rem !important;
+  padding: var(--space-10);
 }
 
 .about__skills-showcase-header {
@@ -310,5 +310,66 @@
 @media (max-width: 950px) {
   .about__top-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .about__tab-btn {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+  }
+
+  .about__tab-panel {
+    padding: var(--space-6);
+  }
+
+  .about__skill-pills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__languages-strip {
+    padding: var(--space-5);
+  }
+
+  .about__languages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .about__skills-showcase-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about__skill-pill:hover {
+    transform: none;
+  }
+
+  .about__lang-item:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .about__bio-card h3 {
+    font-size: var(--text-xl);
+  }
+
+  .about__bio-card p {
+    font-size: var(--text-base);
+  }
+
+  .about__tab-btn {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+
+  .about__tab-icon {
+    display: none;
+  }
+
+  .about__edu-card,
+  .about__honors-card {
+    padding: var(--space-5);
   }
 }

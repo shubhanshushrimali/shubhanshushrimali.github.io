@@ -1,14 +1,37 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
+// Check if user prefers reduced motion
+function usePrefersReducedMotion() {
+  const [prefersReduced, setPrefersReduced] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReduced(mq.matches)
+    const handler = (e) => setPrefersReduced(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return prefersReduced
+}
+
+// Determine particle count based on device
+function getParticleCount() {
+  if (typeof window === 'undefined') return 1200
+  const width = window.innerWidth
+  if (width < 768) return 500
+  if (width < 1024) return 900
+  return 1800
+}
+
 // Rotating Cyber Core Geometry (Hologram Polyhedron)
-function CyberCore() {
+function CyberCore({ reducedMotion }) {
   const coreRef = useRef()
   const ringRef = useRef()
   const ring2Ref = useRef()
 
   useFrame((state) => {
+    if (reducedMotion) return
     const t = state.clock.getElapsedTime()
     if (coreRef.current) {
       coreRef.current.rotation.x = t * 0.25
@@ -31,7 +54,7 @@ function CyberCore() {
         <icosahedronGeometry args={[1.2, 1]} />
         <meshBasicMaterial
           wireframe
-          color="#00f0ff"
+          color="#c9a55a"
           transparent
           opacity={0.4}
         />
@@ -41,7 +64,7 @@ function CyberCore() {
       <mesh>
         <sphereGeometry args={[0.5, 16, 16]} />
         <meshBasicMaterial
-          color="#a855f7"
+          color="#7c6fa0"
           transparent
           opacity={0.25}
         />
@@ -50,32 +73,32 @@ function CyberCore() {
       {/* Orbiting Orbital Ring 1 */}
       <mesh ref={ringRef}>
         <torusGeometry args={[1.8, 0.015, 16, 100]} />
-        <meshBasicMaterial color="#38bdf8" transparent opacity={0.6} />
+        <meshBasicMaterial color="#7090b0" transparent opacity={0.6} />
       </mesh>
 
       {/* Orbiting Orbital Ring 2 */}
       <mesh ref={ring2Ref}>
         <torusGeometry args={[2.2, 0.01, 16, 100]} />
-        <meshBasicMaterial color="#ec4899" transparent opacity={0.4} />
+        <meshBasicMaterial color="#c05e3c" transparent opacity={0.4} />
       </mesh>
     </group>
   )
 }
 
-function ParticleField() {
+function ParticleField({ reducedMotion, particleCount }) {
   const meshRef = useRef()
-  const count = 1800
+  const count = particleCount
 
   const [positions, colors] = useMemo(() => {
     const pos = new Float32Array(count * 3)
     const col = new Float32Array(count * 3)
 
     const palette = [
-      new THREE.Color('#00f0ff'),
-      new THREE.Color('#a855f7'),
-      new THREE.Color('#38bdf8'),
-      new THREE.Color('#10b981'),
-      new THREE.Color('#f43f5e'),
+      new THREE.Color('#c9a55a'),
+      new THREE.Color('#7090b0'),
+      new THREE.Color('#a8c4d8'),
+      new THREE.Color('#5a8a6c'),
+      new THREE.Color('#8892a4'),
     ]
 
     for (let i = 0; i < count; i++) {
@@ -91,20 +114,20 @@ function ParticleField() {
     }
 
     return [pos, col]
-  }, [])
+  }, [count])
 
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.015
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.025
+    if (reducedMotion || !meshRef.current) return
 
-      const posArray = meshRef.current.geometry.attributes.position.array
-      for (let i = 0; i < count; i++) {
-        const i3 = i * 3
-        posArray[i3 + 1] += Math.sin(state.clock.elapsedTime * 0.8 + i * 0.05) * 0.0015
-      }
-      meshRef.current.geometry.attributes.position.needsUpdate = true
+    meshRef.current.rotation.x = state.clock.elapsedTime * 0.015
+    meshRef.current.rotation.y = state.clock.elapsedTime * 0.025
+
+    const posArray = meshRef.current.geometry.attributes.position.array
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3
+      posArray[i3 + 1] += Math.sin(state.clock.elapsedTime * 0.8 + i * 0.05) * 0.0015
     }
+    meshRef.current.geometry.attributes.position.needsUpdate = true
   })
 
   return (
@@ -137,6 +160,18 @@ function ParticleField() {
 }
 
 export default function ParticleCanvas() {
+  const reducedMotion = usePrefersReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  const [particleCount] = useState(() => getParticleCount())
+
+  // Lazy-mount: defer Three.js canvas until after first paint
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
+
+  if (!mounted) return null
+
   return (
     <div style={{
       position: 'fixed',
@@ -153,10 +188,11 @@ export default function ParticleCanvas() {
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
+        frameloop={reducedMotion ? 'demand' : 'always'}
       >
         <ambientLight intensity={0.8} />
-        <ParticleField />
-        <CyberCore />
+        <ParticleField reducedMotion={reducedMotion} particleCount={particleCount} />
+        <CyberCore reducedMotion={reducedMotion} />
       </Canvas>
     </div>
   )

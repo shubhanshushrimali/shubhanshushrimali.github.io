@@ -1,0 +1,190 @@
+/* ═══════════════════════════════════════════════════════
+   CINEMATIC ENGINE — Visual Layer CSS
+   Custom cursor, film grain, scroll progress, reveals
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Custom Magnetic Cursor ─── */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none;
+}
+
+.cinematic-cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.cinematic-cursor__dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(201, 165, 90, 0.6);
+  transition: width 0.25s, height 0.25s, top 0.25s, left 0.25s, background 0.25s;
+  will-change: transform;
+}
+
+.cinematic-cursor__ring {
+  position: fixed;
+  top: -22px;
+  left: -22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201, 165, 90, 0.25);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              top 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              left 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s,
+              background 0.25s;
+  will-change: transform;
+}
+
+.cinematic-cursor__trail {
+  position: fixed;
+  top: -32px;
+  left: -32px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 165, 90, 0.04) 0%, transparent 70%);
+  will-change: transform;
+}
+
+/* Hover State */
+.cinematic-cursor--hover .cinematic-cursor__dot {
+  width: 14px;
+  height: 14px;
+  top: -7px;
+  left: -7px;
+  background: var(--accent-ice);
+  box-shadow: 0 0 20px rgba(168, 196, 216, 0.5);
+}
+
+.cinematic-cursor--hover .cinematic-cursor__ring {
+  width: 64px;
+  height: 64px;
+  top: -32px;
+  left: -32px;
+  border-color: rgba(168, 196, 216, 0.35);
+  background: rgba(168, 196, 216, 0.02);
+}
+
+/* ─── Film Grain Overlay ─── */
+.film-grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  image-rendering: pixelated;
+  object-fit: cover;
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  z-index: 10000;
+  background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-steel) 50%, var(--accent-sage) 100%);
+  box-shadow: 0 0 10px rgba(201, 165, 90, 0.4), 0 0 30px rgba(201, 165, 90, 0.15);
+  transition: width 0.08s linear;
+  will-change: width;
+}
+
+/* ─── Scroll-Linked Reveal Transitions ─── */
+
+/* Stagger card parallax depth */
+.glass-card {
+  will-change: transform, opacity;
+}
+
+/* Hero parallax fade */
+.hero__content {
+  will-change: transform, opacity;
+}
+
+/* Sections: smooth clip reveal */
+section:not(.hero) {
+  will-change: clip-path, opacity;
+}
+
+/* ─── Navbar Scroll Morphing ─── */
+.navbar--scrolled {
+  backdrop-filter: blur(28px) saturate(1.3);
+  -webkit-backdrop-filter: blur(28px) saturate(1.3);
+}
+
+/* ─── Enhanced Glass Card Hover ─── */
+@media (hover: hover) {
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(201, 165, 90, 0.04) 0%,
+      transparent 60%
+    );
+    transition: opacity 0.4s ease;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .glass-card:hover::after {
+    opacity: 1;
+  }
+}
+
+/* ─── Button Magnetic Bounce ─── */
+.btn {
+  will-change: transform;
+}
+
+/* ─── Responsive: Disable heavy effects on mobile ─── */
+@media (max-width: 768px) {
+  .film-grain-overlay {
+    display: none;
+  }
+
+  .cinematic-cursor,
+  .has-custom-cursor {
+    display: none;
+  }
+
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: auto;
+  }
+}
+
+/* ─── Prefers Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .film-grain-overlay,
+  .cinematic-cursor,
+  .scroll-progress-bar {
+    display: none;
+  }
+
+  .glass-card,
+  .hero__content,
+  section {
+    will-change: auto;
+  }
+}

@@ -69,3 +69,44 @@
   font-size: 0.75rem;
   color: var(--text-muted);
 }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+
+  .footer__container {
+    gap: var(--space-5);
+  }
+
+  .footer__brand {
+    font-size: var(--text-lg);
+  }
+
+  .footer__tagline {
+    font-size: var(--text-xs);
+    line-height: 1.6;
+  }
+
+  .footer__socials {
+    gap: var(--space-3);
+  }
+
+  .footer__copy {
+    font-size: 0.65rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer__brand {
+    font-size: var(--text-base);
+  }
+
+  .footer__socials a {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
