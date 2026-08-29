@@ -12,8 +12,8 @@
 }
 
 .experience__item-card {
-  padding: 2.5rem !important;
-  border-left: 4px solid var(--neon-cyan) !important;
+  padding: 2.5rem;
+  border-left: 4px solid var(--accent-gold);
 }
 
 .experience__item-header {
@@ -30,6 +30,7 @@
   align-items: center;
   gap: 0.8rem;
   margin-bottom: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .experience__item-type {
@@ -84,7 +85,7 @@
 }
 
 .experience__check-icon {
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   margin-top: 0.3rem;
   flex-shrink: 0;
   font-size: 1.1rem;
@@ -101,17 +102,34 @@
 .experience__tech-tag {
   font-size: 0.75rem;
   padding: 0.25rem 0.75rem;
-  background: rgba(0, 240, 255, 0.05);
-  border: 1px solid rgba(0, 240, 255, 0.15);
+  background: rgba(201, 165, 90, 0.05);
+  border: 1px solid rgba(201, 165, 90, 0.15);
   border-radius: 15px;
-  color: var(--text-accent);
+  color: var(--accent-gold);
 }
 
+/* ─── Mobile ─── */
 @media (max-width: 768px) {
   .experience__item-header {
     flex-direction: column;
   }
   .experience__item-meta {
     align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience__item-card {
+    padding: 1.5rem;
+    border-left-width: 3px;
+  }
+  .experience__item-highlights li {
+    font-size: 0.88rem;
+    gap: 0.6rem;
+  }
+  .experience__item-role {
+    font-size: 1.15rem;
   }
 }

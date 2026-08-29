@@ -25,7 +25,7 @@ const benchmarks = [
       buildSize: '185 MB APK',
       drawCalls: '320+ Draw Calls',
       barPercent: 45,
-      color: '#ef4444'
+      color: '#c05e3c'
     },
     optimized: {
       label: 'Engine-Level Shaders & Addressables',
@@ -34,7 +34,7 @@ const benchmarks = [
       buildSize: '110 MB (-40% Build Size)',
       drawCalls: '48 Batched Draw Calls',
       barPercent: 100,
-      color: '#10b981'
+      color: '#5a8a6c'
     },
     summary:
       'Profiled HLSL shaders, batched draw calls with GPU instancing, and streamed assets via Addressables to lock 60 FPS on low-tier mobile hardware.'
@@ -50,7 +50,7 @@ const benchmarks = [
       cache: 'No Prompt Caching',
       cost: '$4.80 / 1M Tokens',
       barPercent: 25,
-      color: '#ef4444'
+      color: '#c05e3c'
     },
     optimized: {
       label: 'vLLM + Speculative Decoding + Caching',
@@ -59,7 +59,7 @@ const benchmarks = [
       cache: 'Prefix KV-Cache Reuse',
       cost: '$0.78 / 1M Tokens (-83% Cost)',
       barPercent: 100,
-      color: '#00f0ff'
+      color: '#7090b0'
     },
     summary:
       'Deployed self-hosted vLLM with speculative draft models and prompt prefix caching across GPU clusters, scaling agent loop throughput by 6.2x.'
@@ -75,7 +75,7 @@ const benchmarks = [
       spikes: '16.8ms GC/Defrag Spikes',
       cacheMiss: '14.2% L1/L2 Cache Misses',
       barPercent: 30,
-      color: '#ef4444'
+      color: '#c05e3c'
     },
     optimized: {
       label: 'Eisen Linear Arena & Pool Allocator',
@@ -84,7 +84,7 @@ const benchmarks = [
       spikes: '0ms Allocation Spikes',
       cacheMiss: '1.8% Cache Miss (Contiguous)',
       barPercent: 100,
-      color: '#a855f7'
+      color: '#7c6fa0'
     },
     summary:
       'Engineered pre-allocated memory arenas with contiguous cache-line alignment, completely eliminating runtime heap allocations during render ticks.'

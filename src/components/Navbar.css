@@ -18,8 +18,8 @@
 }
 
 .navbar--overclock {
-  border-bottom: 1px solid var(--neon-cyan) !important;
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.25) !important;
+  border-bottom: 1px solid var(--accent-gold) !important;
+  box-shadow: 0 0 25px rgba(201, 165, 90, 0.25) !important;
 }
 
 .navbar__container {
@@ -39,7 +39,7 @@
 }
 
 .navbar__logo-bracket {
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
 }
 
 .navbar__links {
@@ -67,7 +67,7 @@
   background: var(--gradient-cyber);
   border-radius: 1px;
   transition: width 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 10px rgba(201, 165, 90, 0.5);
 }
 
 .navbar__link:hover,
@@ -82,7 +82,7 @@
 
 .navbar__link-number {
   font-size: 0.75rem;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   margin-right: 0.35rem;
 }
 
@@ -108,21 +108,21 @@
 }
 
 .navbar__action-btn:hover {
-  background: rgba(0, 240, 255, 0.08);
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
+  background: rgba(201, 165, 90, 0.08);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
 }
 
 .navbar__action-btn--active {
-  background: rgba(16, 185, 129, 0.12) !important;
-  border-color: var(--neon-emerald) !important;
-  color: var(--neon-emerald) !important;
-  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+  background: rgba(90, 138, 108, 0.12) !important;
+  border-color: var(--accent-sage) !important;
+  color: var(--accent-sage) !important;
+  box-shadow: 0 0 15px rgba(90, 138, 108, 0.2);
 }
 
 .navbar__cmd-btn {
-  background: rgba(0, 240, 255, 0.05);
-  border-color: rgba(0, 240, 255, 0.25);
+  background: rgba(201, 165, 90, 0.05);
+  border-color: rgba(201, 165, 90, 0.25);
 }
 
 .cmd-badge {
@@ -167,7 +167,7 @@
 }
 
 .navbar__mobile-link:hover {
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
 }
 
 .navbar__mobile-footer {

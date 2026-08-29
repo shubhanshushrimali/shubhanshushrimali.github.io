@@ -15,37 +15,19 @@ import './About.css'
 
 const skillCategories = [
   {
-    id: 'ai',
-    name: 'AI & Agentic Systems',
-    icon: <FiCpu />,
-    badge: 'Core Focus',
-    skills: [
-      'LangGraph Cyclic StateGraphs',
-      '24/7 Daemon Agent Loops',
-      'Model Context Protocol (MCP)',
-      'Eval Harness & LLM-as-Judge',
-      'Trace Extraction Pipelines',
-      'vLLM & Speculative Decoding',
-      'Prompt Cache & Token Optimization',
-      'LoRA / QLoRA Fine-Tuning',
-      'Constrained JSON (Outlines)',
-      'RunPod / Vast.ai GPU Clusters'
-    ]
-  },
-  {
     id: 'engines',
     name: 'Engines & Real-Time Graphics',
     icon: <FiLayers />,
-    badge: 'Flagship',
+    badge: 'Core Focus',
     skills: [
-      'Unreal Engine 5 (C++, GAS)',
+      'Custom C++ Engine (Eisen Engine — Vulkan/OpenGL)',
+      'Unreal Engine 5 (C++, GAS, Niagara)',
       'Unity (C#, DOTS/ECS, UGUI)',
-      'Custom C++ Engine (Eisen Engine)',
-      'Flutter / Flame / React Native',
       'HLSL / GLSL Shaders & Compute',
-      'Niagara Particle VFX',
+      'VR Simulations (OpenXR, Meta Quest SDK)',
+      'Niagara Particle VFX & GPU Compute',
       'AWS Authoritative Dedicated Servers',
-      'FastAPI / Node.js / Docker'
+      'Flutter / Flame / React Native'
     ]
   },
   {
@@ -69,12 +51,26 @@ const skillCategories = [
     icon: <FiTerminal />,
     badge: 'DevOps',
     skills: [
+      'RenderDoc & Unity Profiler (60 FPS Targeting)',
       'Xcode / Swift / TestFlight Staging',
       'Android Studio / Play Console',
-      'Antigravity IDE & Cursor AI Workflows',
       'GitHub Actions & Fastlane CI/CD',
-      'RenderDoc & Unity Profiler (60 FPS)',
-      'Git / Perforce / Linux Systems'
+      'Git / Perforce / Linux Systems',
+      'Docker / RunPod / Vast.ai'
+    ]
+  },
+  {
+    id: 'ai',
+    name: 'AI & Agentic Systems',
+    icon: <FiCpu />,
+    badge: 'Secondary',
+    skills: [
+      'LangGraph Cyclic StateGraphs',
+      'Model Context Protocol (MCP)',
+      'vLLM & Speculative Decoding',
+      'LoRA / QLoRA Fine-Tuning',
+      'Prompt Cache & Token Optimization',
+      'RunPod / Vast.ai GPU Clusters'
     ]
   }
 ]
@@ -89,7 +85,7 @@ const coreLanguages = [
 ]
 
 export default function About() {
-  const [activeTab, setActiveTab] = useState('ai')
+  const [activeTab, setActiveTab] = useState('engines')
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
@@ -103,11 +99,11 @@ export default function About() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-number">01. Engineering Profile</span>
-          <h2>Architecture & <span className="gradient-text">Skills Matrix</span></h2>
+          <span className="section-number">01. Game Engineering Profile</span>
+          <h2>Engine & <span className="gradient-text">Skills Matrix</span></h2>
           <p>
-            Operating across the full spectrum: from low-level C++/Vulkan game loops and shader optimization 
-            to autonomous multi-agent graphs and cloud GPU clusters.
+            Full-stack game engineer: from low-level C++/Vulkan rendering and shader optimization 
+            to VR simulations, multiplayer backends, and shipped production titles.
           </p>
           <div className="section-line" />
         </motion.div>
@@ -124,28 +120,28 @@ export default function About() {
           >
             <div className="about__bio-header">
               <FiCode className="about__bio-icon" />
-              <h3>AI Systems & Game Engineer</h3>
+              <h3>Game Engine Developer & Creative Coder</h3>
             </div>
             
             <p>
-              I build high-concurrency, real-time interactive systems and autonomous AI graphs. 
-              My work spans shipping production games to <strong>300,000+ active players</strong> (achieving 
-              <strong> Top 10 rankings on iOS & Android</strong>), architecting <strong>cyclic LangGraph agent networks</strong> with MCP tooling, 
-              and crafting custom game engines in <strong>C++ and Vulkan/OpenGL</strong>.
+              I build real-time interactive systems and ship production games to massive audiences. 
+              My work spans growing titles to <strong>300,000+ active players</strong> (achieving 
+              <strong>Top 10 rankings on iOS & Android</strong>), crafting custom game engines in 
+              <strong>C++ and Vulkan/OpenGL</strong>, and building immersive VR training simulations.
             </p>
 
             <p>
               I believe in building resilient systems — whether that's profiling HLSL shaders to lock 
-              <strong> 60 FPS on low-tier mobile hardware</strong>, deploying speculative decoding on vLLM clusters, 
-              or structuring authoritative 64-player server state synchronization.
+              <strong>60 FPS on low-tier mobile hardware</strong>, architecting authoritative 64-player 
+              server state synchronization, or designing VR escape rooms with physics-based puzzles.
             </p>
 
             <div className="about__quick-tags">
               <span className="hud-badge hud-badge--emerald">
-                <FiZap /> 300K+ Production Reach
+                <FiZap /> 300K+ Players Shipped
               </span>
               <span className="hud-badge hud-badge--purple">
-                <FiCpu /> LangGraph & MCP Architect
+                <FiCpu /> Custom Engine Architect
               </span>
               <span className="hud-badge">
                 <FiLayers /> C++ & Vulkan Specialist

@@ -88,25 +88,6 @@ void ARPGCharacter::GrantAbility(TSubclassOf<UGameplayAbility> AbilityClass) {
     github: 'https://github.com/shubhanshushrimali',
     live: null,
     hasAgentVisualizer: true
-  },
-  {
-    id: 'ai-blog',
-    title: 'AI-Powered Technical Publishing Platform',
-    subtitle: 'Next.js, MDX & Automated Agentic Drafting',
-    year: '2026',
-    featured: false,
-    badge: 'GenAI & Web',
-    badgeColor: 'gold',
-    description:
-      'An automated developer publication engine where AI agents autonomously research emerging systems topics, draft MDX articles with verified benchmarks, fact-check code examples, and publish across DEV.to and Medium via APIs.',
-    highlights: [
-      'Autonomous research agents with fact-checking validation steps',
-      'Direct API synchronization with DEV.to and Medium',
-      'Blazing fast Next.js & MDX architecture'
-    ],
-    tech: ['Next.js', 'React', 'MDX', 'GenAI Pipelines', 'DEV.to API', 'Tailwind'],
-    github: 'https://github.com/shubhanshushrimali',
-    live: 'https://shubhanshushrimali.github.io'
   }
 ]
 
@@ -124,11 +105,11 @@ export default function Projects() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-number">02. Engineering Showcases</span>
-          <h2>Featured & <span className="gradient-text">Personal Projects</span></h2>
+          <span className="section-number">02. Game & Engine Showcases</span>
+          <h2>Flagship <span className="gradient-text">Game Projects</span></h2>
           <p>
-            Interactive 3D engine simulations, 64-player multiplayer netcode, and 
-            autonomous LangGraph agentic pipelines.
+            Custom game engines, 64-player multiplayer netcode, VR simulations, and 
+            autonomous AI pipelines for game content generation.
           </p>
           <div className="section-line" />
         </motion.div>

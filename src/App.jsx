@@ -1,16 +1,11 @@
-import { useState, useEffect, lazy, Suspense, useCallback } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import './index.css'
 import './styles/cinematic.css'
 import {
-  useMagneticCursor,
   useScrollAnimations,
   useSmoothScroll,
-  useFilmGrain,
-  useMagneticButtons,
-  useScrollProgress,
-  useSectionReveals
+  useScrollProgress
 } from './hooks/useCinematicEngine'
-import ParticleCanvas from './components/ParticleCanvas'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -22,10 +17,11 @@ import Footer from './components/Footer'
 import CommandPalette from './components/CommandPalette'
 import { soundFX } from './utils/audio'
 
-/* Lazy-load heavy components that aren't visible above the fold */
+/* Lazy-load heavy components — Three.js (~800KB) and VideoShowcase */
+const ParticleCanvas = lazy(() => import('./components/ParticleCanvas'))
 const VideoShowcase = lazy(() => import('./components/VideoShowcase'))
 
-/* Loading fallback for lazy components */
+/* Loading fallback */
 function SectionLoader() {
   return (
     <div className="glass-card" style={{
@@ -46,14 +42,10 @@ function App() {
   const [isCmdOpen, setIsCmdOpen] = useState(false)
   const [isOverclocked, setIsOverclocked] = useState(false)
 
-  // ═══ Cinematic Engine Hooks ═══
-  useMagneticCursor()
+  // ═══ Cinematic Engine — Lightweight Hooks Only ═══
   useScrollAnimations()
   useSmoothScroll()
-  useFilmGrain()
-  useMagneticButtons()
   useScrollProgress()
-  useSectionReveals()
 
   // Mouse-follow radial glow on glass cards
   useEffect(() => {
@@ -71,7 +63,7 @@ function App() {
     return () => cards.forEach(c => c.removeEventListener('mousemove', handleCardMouse))
   }, [])
 
-  // Keyboard shortcut listener for Ctrl+K, Cmd+K, and ~ (Tilde/Console)
+  // Keyboard shortcut: Ctrl+K / Cmd+K / ~ for command palette
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -87,19 +79,12 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Easter Egg: Konami Code Sequence (Up, Up, Down, Down, Left, Right, Left, Right, B, A)
+  // Konami Code Easter Egg
   useEffect(() => {
     const konamiCode = [
-      'ArrowUp',
-      'ArrowUp',
-      'ArrowDown',
-      'ArrowDown',
-      'ArrowLeft',
-      'ArrowRight',
-      'ArrowLeft',
-      'ArrowRight',
-      'b',
-      'a'
+      'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+      'b', 'a'
     ]
     let konamiIndex = 0
 
@@ -120,23 +105,19 @@ function App() {
     return () => window.removeEventListener('keydown', handleKonami)
   }, [])
 
-  const toggleOverclock = () => {
-    setIsOverclocked(!isOverclocked)
-  }
-
   return (
     <div className={`app-root ${isOverclocked ? 'app-root--overclock' : ''}`}>
-      {/* 3D WebGL Background Canvas */}
-      <ParticleCanvas />
+      {/* 3D Background — Lazy-loaded (Three.js is ~800KB) */}
+      <Suspense fallback={null}>
+        <ParticleCanvas />
+      </Suspense>
 
-      {/* Navigation Header */}
       <Navbar
         onOpenCmd={() => setIsCmdOpen(true)}
         isOverclocked={isOverclocked}
-        onToggleOverclock={toggleOverclock}
+        onToggleOverclock={() => setIsOverclocked(!isOverclocked)}
       />
 
-      {/* Main Content Flow */}
       <main id="main-content">
         <Hero />
         <About />
@@ -149,14 +130,12 @@ function App() {
         <Contact />
       </main>
 
-      {/* Footer */}
       <Footer />
 
-      {/* Developer Command Palette HUD (Ctrl+K) */}
       <CommandPalette
         isOpen={isCmdOpen}
         onClose={() => setIsCmdOpen(false)}
-        onToggleOverclock={toggleOverclock}
+        onToggleOverclock={() => setIsOverclocked(!isOverclocked)}
         isOverclocked={isOverclocked}
       />
     </div>

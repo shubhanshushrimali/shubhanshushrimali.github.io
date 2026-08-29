@@ -25,7 +25,7 @@
 
 .about__bio-icon {
   font-size: 1.6rem;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
 }
 
 .about__bio-card h3 {
@@ -76,7 +76,7 @@
 .about__side-badge {
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   letter-spacing: 0.1em;
 }
 
@@ -152,7 +152,7 @@
 .about__strip-title {
   display: block;
   font-size: 0.8rem;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   margin-bottom: 1.2rem;
   letter-spacing: 0.1em;
 }
@@ -175,8 +175,8 @@
 }
 
 .about__lang-item:hover {
-  background: rgba(0, 240, 255, 0.05);
-  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(201, 165, 90, 0.05);
+  border-color: rgba(201, 165, 90, 0.3);
   transform: translateY(-2px);
 }
 
@@ -228,16 +228,16 @@
 }
 
 .about__tab-btn:hover {
-  background: rgba(0, 240, 255, 0.08);
+  background: rgba(201, 165, 90, 0.08);
   color: var(--text-primary);
-  border-color: rgba(0, 240, 255, 0.3);
+  border-color: rgba(201, 165, 90, 0.3);
 }
 
 .about__tab-btn--active {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(168, 85, 247, 0.15));
-  color: var(--neon-cyan);
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  background: linear-gradient(135deg, rgba(201, 165, 90, 0.15), rgba(124, 111, 160, 0.15));
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 20px rgba(201, 165, 90, 0.2);
 }
 
 .about__tab-icon {
@@ -253,8 +253,8 @@
 }
 
 .about__tab-btn--active .about__tab-pill {
-  background: rgba(0, 240, 255, 0.15);
-  color: var(--neon-cyan);
+  background: rgba(201, 165, 90, 0.15);
+  color: var(--accent-gold);
 }
 
 .about__tab-panel {
@@ -296,13 +296,13 @@
 }
 
 .about__skill-pill:hover {
-  background: rgba(0, 240, 255, 0.06);
-  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(201, 165, 90, 0.06);
+  border-color: rgba(201, 165, 90, 0.3);
   transform: translateX(4px);
 }
 
 .about__pill-check {
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   font-size: 1.15rem;
   flex-shrink: 0;
 }

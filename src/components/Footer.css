@@ -23,7 +23,7 @@
 }
 
 .footer__brand-code {
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
 }
 
 .footer__tagline {
@@ -52,11 +52,11 @@
 }
 
 .footer__socials a:hover {
-  color: var(--neon-cyan);
-  border-color: var(--neon-cyan);
-  background: rgba(0, 240, 255, 0.1);
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  background: rgba(201, 165, 90, 0.1);
   transform: translateY(-3px);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 15px rgba(201, 165, 90, 0.25);
 }
 
 .footer__bottom {

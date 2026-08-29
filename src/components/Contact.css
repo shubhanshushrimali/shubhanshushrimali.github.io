@@ -26,7 +26,7 @@
 
 .contact__info-icon {
   font-size: 1.4rem;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   margin-bottom: 0.2rem;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .contact__info-card a:hover {
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
 }
 
 .contact__socials-box {
@@ -82,9 +82,9 @@
 }
 
 .contact__social-btn:hover {
-  background: rgba(0, 240, 255, 0.08);
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
+  background: rgba(201, 165, 90, 0.08);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
   transform: translateY(-2px);
 }
 
@@ -105,7 +105,7 @@
 
 .contact__form-icon {
   font-size: 1.3rem;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
 }
 
 .contact__form-header h3 {
@@ -116,7 +116,7 @@
 .contact__field label {
   display: block;
   font-size: 0.75rem;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   margin-bottom: 0.4rem;
   letter-spacing: 0.05em;
 }
@@ -137,9 +137,9 @@
 
 .contact__field input:focus,
 .contact__field textarea:focus {
-  border-color: var(--neon-cyan);
-  background: rgba(0, 240, 255, 0.04);
-  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.12);
+  border-color: var(--accent-gold);
+  background: rgba(201, 165, 90, 0.04);
+  box-shadow: 0 0 0 3px rgba(201, 165, 90, 0.12);
 }
 
 .contact__field input::placeholder,
@@ -171,7 +171,7 @@
 
 .contact__success h3 {
   font-size: 1.5rem;
-  color: var(--neon-cyan);
+  color: var(--accent-gold);
   margin-bottom: 0.6rem;
 }
 
