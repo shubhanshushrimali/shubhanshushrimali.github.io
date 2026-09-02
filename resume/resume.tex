@@ -1,0 +1,319 @@
+%==========================================================================
+%  SHUBHANSHU SHRIMALI — 1-Page Resume (v7 — COMBINED)
+%  Compile with: pdflatex or xelatex (Overleaf compatible)
+%  Original game/systems content kept. AI work added, nothing removed.
+%==========================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.38in, top=0.28in, bottom=0.22in]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{paracol}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{primaryblue}{RGB}{37, 99, 210}
+\definecolor{accentlight}{RGB}{228, 238, 254}
+\definecolor{subtext}{RGB}{80, 90, 105}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=primaryblue,
+    linkcolor=primaryblue,
+    pdfborder={0 0 0}
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\setlist[itemize]{leftmargin=10pt, itemsep=1pt, topsep=1pt, parsep=0pt}
+
+\newcommand{\sectiontitle}[1]{%
+    \vspace{4pt}%
+    \noindent%
+    \begin{tikzpicture}[baseline=-0.5ex]
+        \fill[accentlight] (0,0) rectangle (\linewidth,0.34cm);
+        \node[anchor=west, inner sep=0pt] at (0.08cm,0.17cm)
+            {\fontsize{8.5}{10}\bfseries\selectfont\color{primaryblue}%
+             \MakeUppercase{#1}};
+    \end{tikzpicture}%
+    \vspace{2pt}%
+}
+
+\newcommand{\rightsectiontitle}[1]{%
+    \vspace{4pt}%
+    \noindent%
+    \begin{tikzpicture}[baseline=-0.5ex]
+        \fill[accentlight] (0,0) rectangle (\linewidth,0.31cm);
+        \node[anchor=west, inner sep=0pt] at (0.06cm,0.155cm)
+            {\fontsize{8}{9.2}\bfseries\selectfont\color{primaryblue}%
+             \MakeUppercase{#1}};
+    \end{tikzpicture}%
+    \vspace{1.5pt}%
+}
+
+\begin{document}
+
+\vspace{-0.05in}
+
+\setcolumnwidth{0.67\textwidth, 0.30\textwidth}
+\setlength{\columnsep}{0.03\textwidth}
+
+\begin{paracol}{2}
+
+{\fontsize{20}{24}\bfseries\selectfont SHUBHANSHU SHRIMALI}\\[-2pt]
+{\color{primaryblue}\rule{\linewidth}{1.3pt}}
+\vspace{2pt}
+
+\sectiontitle{Professional Summary}
+\fontsize{8}{10}\selectfont
+\textbf{AI-Native Systems \& Game Engineer} with 2+ years shipping
+production games and apps to \textbf{300K+ users} with \textbf{Top~10
+genre rankings} on both App Store \& Google Play. Builds autonomous
+multi-agent systems (LangGraph, MCP, vLLM), self-hosted LLM
+infrastructure, Graphify code search, Hermes skills/IDE, and
+high-concurrency multiplayer backends. Manages cross-platform
+rollout pipelines, app analytics, A/B testing, and ad monetization.
+
+\sectiontitle{Work Experience}
+
+\textbf{AI Systems Engineer, Game \& App Developer}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont Jan 2026 -- Present}\\
+\textbf{\color{primaryblue}Toba Tech}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont India}
+\begin{itemize}
+    \item Grew game audience from zero to \textbf{300K+ users},
+        achieving \textbf{Top~10 genre ranking} on both iOS \&
+        Android through ASO, A/B tested paywalls, and staged rollouts.
+    \item Architected cyclic multi-agent graphs via
+        \textbf{LangGraph} with persistent state checkpoints,
+        \textbf{MCP} tool servers, and automated eval harnesses
+        using LangSmith with LLM-as-a-judge CI/CD gates.
+    \item Deployed self-hosted \textbf{vLLM} inference on
+        RunPod/Vast.ai with speculative decoding \& prompt caching;
+        built trace extraction pipelines for continuous
+        \textbf{QLoRA/PEFT} fine-tuning.
+    \item Shipped production casual, idle, puzzler, and runner titles
+        in \textbf{Unity (C\#)} and gamified apps in
+        \textbf{Flutter/Flame} with complete ecosystems (tutorials,
+        daily rewards, leaderboards, IAP, UGUI).
+    \item Managed hybrid monetization: \textbf{Firebase Analytics},
+        Remote Config A/B tests, ad mediation (AdMob, AppLovin,
+        Unity Ads), IAP funnels, and Crashlytics/Sentry across
+        the 300K+ user base.
+    \item Owned full cross-platform rollout: Web, iOS
+        (Xcode/TestFlight), Android (Play Console), Fastlane
+        automation, GitHub Actions CI/CD, and dynamic color
+        theming pipelines.
+\end{itemize}
+
+\vspace{2pt}
+
+\textbf{Unity \& Real-Time Systems Developer}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont Nov 2024 -- Dec 2025}\\
+\textbf{\color{primaryblue}Carina Softlabs}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont India}
+\begin{itemize}
+    \item Shipped an MMORPG, 2.5D platformer, and mobile titles;
+        architected authoritative headless servers on AWS via
+        \textbf{Mirror Networking} with lag compensation for
+        \textbf{50+ CCU}.
+    \item Designed scalable AWS backend (EC2, auto-scaling) for
+        zero-downtime under traffic spikes; reduced memory by
+        \textbf{35\%} and build size by \textbf{40\%} via
+        Addressables.
+    \item Profiled shaders (HLSL) and draw calls via
+        \textbf{RenderDoc \& Unity Profiler}, locking
+        \textbf{60~FPS} on low-tier mobile hardware.
+\end{itemize}
+
+\vspace{2pt}
+
+\textbf{Systems Developer (Contract)}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont Aug -- Sep 2024}\\
+\textbf{\color{primaryblue}Ingenuity Gaming}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont Remote}
+\begin{itemize}
+    \item Built deterministic 2D game loops, state machines, and
+        payout engines in C\#; cut memory 25\% via object pooling.
+\end{itemize}
+
+\vspace{2pt}
+
+\textbf{XR Systems Intern}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont Aug -- Sep 2023}\\
+\textbf{\color{primaryblue}AIVARSE}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont India}
+\begin{itemize}
+    \item Built XR prototypes with OpenXR \& Meta Quest SDK;
+        optimized rendering to sustain \textbf{72+ FPS} on
+        standalone headsets.
+\end{itemize}
+
+\sectiontitle{Personal Projects}
+
+\textbf{Open-World 64-Player Multiplayer RPG}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont 2024 -- 2025}\\
+{\fontsize{7.5}{9}\selectfont\textit{UE5 (C++), GAS, Niagara,
+Steamworks, AWS EC2}}
+\begin{itemize}
+    \item Open-world RPG with GAS attribute replication, AI behavior
+        trees, vehicle physics, and 64-player dedicated servers.
+\end{itemize}
+
+\vspace{1pt}
+
+\textbf{Eisen Engine --- AI-Native C++ Game Engine}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont 2025 -- Present}\\
+{\fontsize{7.5}{9}\selectfont\textit{C/C++, Vulkan, GLSL, ECS,
+Custom Allocators}}
+\begin{itemize}
+    \item Custom engine from scratch with Vulkan rendering, AI-native
+        subsystems for procedural gen and runtime LLM integration.
+\end{itemize}
+
+\vspace{1pt}
+
+\textbf{Hermes Agent --- Skills, Graphify \& Desktop IDE}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont 2026}\\
+{\fontsize{7.5}{9}\selectfont\textit{Python, Electron, Graphify,
+MCP, Skills}}
+\begin{itemize}
+    \item Extended Hermes with extra skills, wired \textbf{Graphify}
+        for codebase query and code search, and added the Electron
+        desktop IDE so the agent can search, plan, and edit in one loop.
+\end{itemize}
+
+\vspace{1pt}
+
+\textbf{Agentic Marketing Agency}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont 2026}\\
+{\fontsize{7.5}{9}\selectfont\textit{LangGraph, FastAPI, Pydantic,
+MongoDB}}
+\begin{itemize}
+    \item Six-agent LangGraph pipeline (research $\rightarrow$ strategy
+        $\rightarrow$ copy $\rightarrow$ QA $\rightarrow$ forecast
+        $\rightarrow$ publish) with isolated tools and brand memory.
+\end{itemize}
+
+\vspace{1pt}
+
+\textbf{Autonomous AI Research Agents}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont 2026}\\
+{\fontsize{7.5}{9}\selectfont\textit{Python, LangGraph, MCP, vLLM,
+LoRA/PEFT, Docker}}
+\begin{itemize}
+    \item 24/7 research agents with LangGraph, MCP tools, and trace
+        extraction for literature mining \& LoRA dataset distillation.
+\end{itemize}
+
+\vspace{1pt}
+
+\textbf{AI-Powered Technical Blog}
+    \hfill {\color{subtext}\fontsize{7.5}{9}\selectfont 2026}\\
+{\fontsize{7.5}{9}\selectfont\textit{Next.js, MDX, GenAI Pipelines,
+DEV.to API}}
+\begin{itemize}
+    \item AI agents that research, draft, fact-check, and auto-publish
+        deep-dive technical articles.
+\end{itemize}
+
+\switchcolumn
+
+\null\vspace*{28pt}%
+\rightsectiontitle{Contact}
+\fontsize{7}{8.6}\selectfont
+\textbf{Location:} Udaipur, India\\
+\textbf{Phone:} +91-8290529725\\
+\textbf{Email:} \href{mailto:shubhanshu200425@gmail.com}%
+    {shubhanshu200425@gmail.com}\\
+\textbf{GitHub:} \href{https://github.com/shubhanshushrimali}%
+    {shubhanshushrimali}\\
+\textbf{LinkedIn:} \href{https://www.linkedin.com/in/shubhanshu-shrimali-06726823b}%
+    {in/shubhanshushrimali}\\
+\textbf{Medium:} \href{https://medium.com/@shubhanshu200425}%
+    {@shubhanshu200425}\\
+\textbf{DEV.to:} \href{https://dev.to/shubhanshu_shrimali}%
+    {shubhanshu\_shrimali}\\
+\textbf{Portfolio:} \href{https://shubhanshushrimali.github.io/}
+    {shubhanshushrimali.dev}
+
+\rightsectiontitle{Languages}
+\fontsize{7.2}{9}\selectfont
+C \,$\cdot$\, C++ \,$\cdot$\, C\# \,$\cdot$\,
+Python \,$\cdot$\, Dart \,$\cdot$\, Swift
+
+\rightsectiontitle{AI \& Agentic Systems}
+\fontsize{6.8}{8.2}\selectfont
+\begin{itemize}[leftmargin=7pt, itemsep=0.4pt]
+    \item LangGraph Cyclic StateGraphs
+    \item 24/7 Daemon Agent Loops
+    \item Model Context Protocol (MCP)
+    \item Hermes skills \& Desktop IDE
+    \item Graphify query \& code search
+    \item Eval Harness \& LLM-as-Judge
+    \item Trace Extraction Pipelines
+    \item vLLM \& Speculative Decoding
+    \item Prompt Cache \& Token Opt.
+    \item LoRA / QLoRA Fine-Tuning
+    \item Constrained JSON (Outlines)
+    \item RunPod / Vast.ai GPU Clusters
+\end{itemize}
+
+\rightsectiontitle{App Growth \& Monetization}
+\fontsize{6.8}{8.2}\selectfont
+\begin{itemize}[leftmargin=7pt, itemsep=0.4pt]
+    \item 300K+ Users, Top~10 Genre
+    \item Firebase Analytics \& RemoteConfig
+    \item A/B Testing \& Feature Flags
+    \item Ad Mediation (AdMob/AppLovin)
+    \item IAP Funnels \& ASO
+    \item Crashlytics / Sentry
+\end{itemize}
+
+\rightsectiontitle{Engines \& Frameworks}
+\fontsize{6.8}{8.2}\selectfont
+\begin{itemize}[leftmargin=7pt, itemsep=0.4pt]
+    \item Unreal Engine 5 (C++, GAS)
+    \item Unity (C\#, DOTS/ECS, UGUI)
+    \item Custom C++ Engine (Eisen)
+    \item Flutter / Flame / React Native
+    \item HLSL / GLSL / Niagara VFX
+    \item AWS Dedicated Game Servers
+    \item FastAPI / Node.js / Docker
+\end{itemize}
+
+\rightsectiontitle{Platforms \& Tooling}
+\fontsize{6.8}{8.2}\selectfont
+\begin{itemize}[leftmargin=7pt, itemsep=0.4pt]
+    \item Xcode / Swift / TestFlight
+    \item Android Studio / Play Console
+    \item Antigravity IDE / Cursor
+    \item Electron (Hermes Desktop IDE)
+    \item GitHub Actions / Fastlane
+    \item RenderDoc \& Unity Profiler
+    \item Git / Perforce / Linux
+\end{itemize}
+
+\rightsectiontitle{Education}
+\fontsize{7}{8.4}\selectfont
+\textbf{B.Tech in Computer Science}\\
+{\color{subtext}Geetanjali Inst.\ of Tech (GITS)}\\
+\textbf{CGPA: 8.3\,/\,10.0}
+    \hfill {\color{subtext}2021--2025}
+
+\rightsectiontitle{Honors}
+\fontsize{7}{8.4}\selectfont
+\begin{itemize}[leftmargin=7pt, itemsep=0.4pt]
+    \item International Black Belt (Karate)
+    \item State-Level Swimmer \& NCC
+\end{itemize}
+
+\end{paracol}
+
+\end{document}

@@ -179,7 +179,7 @@ export default function VideoShowcase() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-number">02b. Game Development Reel</span>
+          <span className="section-number">Reel</span>
           <h2>Shipped Game <span className="gradient-text">Demo Reel</span></h2>
           <p>
             Production gameplay footage from VR simulations, action shooters, and casual titles — 

@@ -282,8 +282,15 @@ code, .mono {
 
 .container {
   max-width: var(--container-max);
+  width: 100%;
+  min-width: 0;
   margin: 0 auto;
   padding: 0 var(--container-padding);
+}
+
+p, li, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 section {
@@ -305,7 +312,9 @@ section {
   padding: var(--space-10);
   transition: all var(--transition-normal);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .glass-card::before {

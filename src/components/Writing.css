@@ -1,0 +1,119 @@
+.writing {
+  position: relative;
+  z-index: 3;
+}
+
+.writing__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.writing__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: var(--space-8);
+  text-decoration: none;
+  color: inherit;
+  min-height: 100%;
+  cursor: pointer;
+}
+
+.writing__card:hover .writing__title {
+  color: var(--accent-gold);
+}
+
+.writing__card:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+.writing__card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.writing__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+.writing__date {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.writing__title {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.35;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.writing__excerpt {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.writing__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.writing__tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  color: var(--text-muted);
+}
+
+.writing__read {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-steel);
+}
+
+.writing__more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 850px) {
+  .writing__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .writing__card {
+    padding: var(--space-6);
+  }
+
+  .writing__more {
+    flex-direction: column;
+  }
+
+  .writing__more .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

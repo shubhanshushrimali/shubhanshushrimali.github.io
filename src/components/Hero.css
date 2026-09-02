@@ -17,6 +17,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  max-width: 100%;
   padding: 0.45rem 1.2rem;
   background: rgba(90, 138, 108, 0.06);
   border: 1px solid rgba(90, 138, 108, 0.25);
@@ -30,6 +31,8 @@
   color: var(--accent-sage);
   letter-spacing: 0.1em;
   font-weight: 600;
+  white-space: normal;
+  line-height: 1.4;
 }
 
 .hero__greeting {
@@ -58,6 +61,8 @@
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.5rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .hero__tagline-prefix {
@@ -75,6 +80,8 @@
   max-width: 820px;
   line-height: 1.85;
   margin-bottom: 2.8rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .hero__description strong {
@@ -104,6 +111,7 @@
   padding: var(--space-5);
   text-align: center;
   border-radius: var(--radius-md);
+  min-width: 0;
 }
 
 .hero__metric-num {
@@ -189,6 +197,16 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
   }
+  .hero__metric-card {
+    padding: 0.85rem 0.5rem;
+  }
+  .hero__metric-num {
+    font-size: 1.35rem;
+  }
+  .hero__metric-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+  }
   .hero__actions {
     flex-direction: column;
   }
@@ -198,10 +216,11 @@
   }
   .hero__hud-status {
     padding: 0.35rem 0.8rem;
+    width: 100%;
   }
   .hero__hud-text {
-    font-size: 0.6rem;
-    letter-spacing: 0.05em;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
   }
   .hero__tagline {
     flex-direction: column;
@@ -210,6 +229,9 @@
   }
   .hero__tagline-prefix {
     font-size: 0.85rem;
+  }
+  .hero__description {
+    font-size: 0.95rem;
   }
 }
 

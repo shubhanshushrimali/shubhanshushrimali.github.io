@@ -114,7 +114,7 @@ export default function BenchmarksSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-number">04. Systems Performance</span>
+          <span className="section-number">Systems</span>
           <h2>Quantitative <span className="gradient-text">Optimization Benchmarks</span></h2>
           <p>
             Real measurable impact: from locking 60 FPS on low-tier mobile hardware to 

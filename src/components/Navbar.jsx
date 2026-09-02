@@ -7,20 +7,20 @@ import {
   FiVolume2,
   FiVolumeX,
   FiBookOpen,
-  FiZap
 } from 'react-icons/fi'
+import { PROFILE } from '../data/site'
 import { soundFX } from '../utils/audio'
 import './Navbar.css'
 
 const navLinks = [
-  { name: 'Architecture', href: '#about' },
-  { name: 'Showcases', href: '#projects' },
+  { name: 'About', href: '#about' },
+  { name: 'Work', href: '#projects' },
+  { name: 'Writing', href: '#writing' },
   { name: 'Experience', href: '#experience' },
-  { name: 'Benchmarks', href: '#benchmarks' },
   { name: 'Contact', href: '#contact' },
 ]
 
-export default function Navbar({ onOpenCmd, isOverclocked, onToggleOverclock }) {
+export default function Navbar({ onOpenCmd, isOverclocked }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -62,8 +62,6 @@ export default function Navbar({ onOpenCmd, isOverclocked, onToggleOverclock }) 
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="navbar__container">
-        
-        {/* Brand Logo */}
         <motion.a
           href="#hero"
           className="navbar__logo font-heading"
@@ -76,7 +74,6 @@ export default function Navbar({ onOpenCmd, isOverclocked, onToggleOverclock }) 
           <span className="navbar__logo-bracket mono"> /&gt;</span>
         </motion.a>
 
-        {/* Desktop Nav Links */}
         <div className="navbar__links">
           {navLinks.map((link, i) => (
             <motion.a
@@ -96,37 +93,34 @@ export default function Navbar({ onOpenCmd, isOverclocked, onToggleOverclock }) 
           ))}
         </div>
 
-        {/* Action Controls (Audio, Command Palette, Resume) */}
         <div className="navbar__right-actions">
-          
-          {/* Audio FX Toggle */}
           <button
             className={`navbar__action-btn ${!isAudioMuted ? 'navbar__action-btn--active' : ''}`}
             onClick={handleToggleAudio}
-            title={isAudioMuted ? 'Enable Cyber SFX Audio' : 'Mute Cyber SFX Audio'}
-            aria-label="Toggle Sound FX"
+            title={isAudioMuted ? 'Enable sound' : 'Mute sound'}
+            aria-label="Toggle sound"
+            type="button"
           >
-            {isAudioMuted ? <FiVolumeX /> : <FiVolume2 />}
+            {isAudioMuted ? <FiVolumeX aria-hidden="true" /> : <FiVolume2 aria-hidden="true" />}
             <span className="btn-label-text mono">{isAudioMuted ? 'SFX_OFF' : 'SFX_ON'}</span>
           </button>
 
-          {/* Terminal / Command Palette Trigger */}
           <button
             className="navbar__action-btn navbar__cmd-btn mono"
             onClick={() => {
               soundFX.playClick()
               onOpenCmd()
             }}
-            title="Open Command Center (Ctrl+K)"
+            title="Open command palette (Ctrl+K)"
+            type="button"
           >
-            <FiTerminal />
+            <FiTerminal aria-hidden="true" />
             <span className="btn-label-text">CMD</span>
             <span className="cmd-badge">Ctrl+K</span>
           </button>
 
-          {/* Resume PDF */}
           <motion.a
-            href="/resume.pdf"
+            href={PROFILE.resumeHref}
             className="btn btn-outline navbar__resume-btn mono"
             target="_blank"
             rel="noopener noreferrer"
@@ -134,10 +128,9 @@ export default function Navbar({ onOpenCmd, isOverclocked, onToggleOverclock }) 
             whileTap={{ scale: 0.95 }}
             onClick={() => soundFX.playSuccess()}
           >
-            <FiBookOpen /> Resume
+            <FiBookOpen aria-hidden="true" /> Resume
           </motion.a>
 
-          {/* Mobile Menu Toggle */}
           <button
             className="navbar__mobile-toggle"
             onClick={() => {
@@ -145,14 +138,13 @@ export default function Navbar({ onOpenCmd, isOverclocked, onToggleOverclock }) 
               setMobileOpen(!mobileOpen)
             }}
             aria-label="Toggle menu"
+            type="button"
           >
-            {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            {mobileOpen ? <FiX size={24} aria-hidden="true" /> : <FiMenu size={24} aria-hidden="true" />}
           </button>
         </div>
-
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -172,16 +164,26 @@ export default function Navbar({ onOpenCmd, isOverclocked, onToggleOverclock }) 
                 {link.name}
               </a>
             ))}
+            <a
+              href={PROFILE.resumeHref}
+              className="navbar__mobile-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleLinkClick}
+            >
+              Resume
+            </a>
             <div className="navbar__mobile-footer">
               <button
                 className="btn btn-outline"
+                type="button"
                 style={{ width: '100%', justifyContent: 'center' }}
                 onClick={() => {
                   setMobileOpen(false)
                   onOpenCmd()
                 }}
               >
-                <FiTerminal /> Open Command Console
+                <FiTerminal aria-hidden="true" /> Command palette
               </button>
             </div>
           </motion.div>

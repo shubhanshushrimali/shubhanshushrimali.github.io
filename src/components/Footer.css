@@ -30,6 +30,8 @@
   font-size: 0.8rem;
   color: var(--text-muted);
   letter-spacing: 0.05em;
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 .footer__socials {

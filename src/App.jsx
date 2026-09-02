@@ -10,18 +10,18 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
+import Writing from './components/Writing'
 import Experience from './components/Experience'
 import BenchmarksSection from './components/BenchmarksSection'
+import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CommandPalette from './components/CommandPalette'
 import { soundFX } from './utils/audio'
 
-/* Lazy-load heavy components — Three.js (~800KB) and VideoShowcase */
 const ParticleCanvas = lazy(() => import('./components/ParticleCanvas'))
 const VideoShowcase = lazy(() => import('./components/VideoShowcase'))
 
-/* Loading fallback */
 function SectionLoader() {
   return (
     <div className="glass-card" style={{
@@ -32,7 +32,7 @@ function SectionLoader() {
     }}>
       <div className="pulse-dot" style={{ margin: '0 auto 1rem' }} />
       <span className="mono" style={{ color: 'var(--text-muted)', fontSize: '0.8rem', letterSpacing: '0.1em' }}>
-        LOADING MODULE...
+        LOADING…
       </span>
     </div>
   )
@@ -42,12 +42,10 @@ function App() {
   const [isCmdOpen, setIsCmdOpen] = useState(false)
   const [isOverclocked, setIsOverclocked] = useState(false)
 
-  // ═══ Cinematic Engine — Lightweight Hooks Only ═══
   useScrollAnimations()
   useSmoothScroll()
   useScrollProgress()
 
-  // Mouse-follow radial glow on glass cards
   useEffect(() => {
     const handleCardMouse = (e) => {
       const card = e.currentTarget
@@ -63,7 +61,6 @@ function App() {
     return () => cards.forEach(c => c.removeEventListener('mousemove', handleCardMouse))
   }, [])
 
-  // Keyboard shortcut: Ctrl+K / Cmd+K / ~ for command palette
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -79,7 +76,6 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Konami Code Easter Egg
   useEffect(() => {
     const konamiCode = [
       'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -107,7 +103,6 @@ function App() {
 
   return (
     <div className={`app-root ${isOverclocked ? 'app-root--overclock' : ''}`}>
-      {/* 3D Background — Lazy-loaded (Three.js is ~800KB) */}
       <Suspense fallback={null}>
         <ParticleCanvas />
       </Suspense>
@@ -122,11 +117,13 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <Writing />
         <Suspense fallback={<SectionLoader />}>
           <VideoShowcase />
         </Suspense>
         <Experience />
         <BenchmarksSection />
+        <Resume />
         <Contact />
       </main>
 

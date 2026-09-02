@@ -5,7 +5,7 @@
 
 .about__top-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 2rem;
   margin-bottom: 2.5rem;
 }
@@ -125,9 +125,11 @@
   gap: 0.8rem;
 }
 
-.about__honor-bullet {
-  font-size: 1.3rem;
-  line-height: 1;
+.about__honor-icon {
+  color: var(--accent-gold);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
 }
 
 .about__honor-item strong {
@@ -208,12 +210,16 @@
   margin-bottom: 1.2rem;
   overflow-x: auto;
   padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .about__tab-btn {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  cursor: pointer;
+  flex-shrink: 0;
   padding: 0.85rem 1.4rem;
   background: rgba(18, 22, 45, 0.6);
   border: 1px solid var(--glass-border);

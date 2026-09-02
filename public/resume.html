@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shubhanshu Shrimali — Resume</title>
+    <meta name="description" content="AI-Native Systems & Game Engineer. 300K+ users, Top 10 iOS & Android. Unity, UE5, Eisen Engine, LangGraph, Hermes, Graphify, vLLM." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #0f172a;
+        --muted: #475569;
+        --line: #2563d2;
+        --band: #e4eefe;
+        --paper: #ffffff;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: Inter, system-ui, sans-serif;
+        color: var(--ink);
+        background: #e8eef6;
+        line-height: 1.45;
+      }
+      .page {
+        max-width: 900px;
+        margin: 24px auto;
+        background: var(--paper);
+        padding: 36px 40px;
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+      }
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .toolbar a, .toolbar button {
+        font: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 8px;
+        border: 1px solid #cbd5e1;
+        background: #fff;
+        color: var(--ink);
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .toolbar .primary {
+        background: #2563d2;
+        color: #fff;
+        border-color: #2563d2;
+      }
+      h1 {
+        font-size: 28px;
+        letter-spacing: -0.03em;
+        margin-bottom: 4px;
+      }
+      .rule { height: 3px; background: var(--line); margin: 8px 0 14px; }
+      .layout { display: grid; grid-template-columns: 1.7fr 0.9fr; gap: 28px; }
+      .band {
+        background: var(--band);
+        color: var(--line);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 5px 8px;
+        margin: 14px 0 8px;
+      }
+      p, li { font-size: 12.5px; overflow-wrap: anywhere; }
+      .muted { color: var(--muted); }
+      .job { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+      .job strong { font-size: 13px; }
+      ul { padding-left: 16px; margin: 4px 0 10px; }
+      li { margin: 3px 0; }
+      a { color: var(--line); }
+      .side p { margin: 3px 0; font-size: 12px; }
+      @media (max-width: 720px) {
+        .page { margin: 0; padding: 22px 18px; box-shadow: none; }
+        .layout { grid-template-columns: 1fr; }
+      }
+      @media print {
+        body { background: #fff; }
+        .toolbar { display: none; }
+        .page { margin: 0; max-width: none; box-shadow: none; padding: 0.35in; }
+        a { text-decoration: none; color: inherit; }
+      }
+    </style>
+  </head>
+  <body>
+    <article class="page">
+      <div class="toolbar">
+        <a href="/">Back to portfolio</a>
+        <button class="primary" type="button" onclick="window.print()">Print / Save PDF</button>
+      </div>
+
+      <h1>Shubhanshu Shrimali</h1>
+      <div class="rule"></div>
+
+      <div class="layout">
+        <div>
+          <div class="band">Professional Summary</div>
+          <p>
+            <strong>AI-Native Systems &amp; Game Engineer</strong> with 2+ years shipping
+            production games and apps to <strong>300K+ users</strong> with <strong>Top 10
+            genre rankings</strong> on both App Store &amp; Google Play. Builds autonomous
+            multi-agent systems (LangGraph, MCP, vLLM), self-hosted LLM infrastructure,
+            Graphify code search, Hermes skills/IDE, and high-concurrency multiplayer backends.
+            Manages cross-platform rollout pipelines, app analytics, A/B testing, and ad monetization.
+          </p>
+
+          <div class="band">Work Experience</div>
+
+          <div class="job">
+            <strong>AI Systems Engineer, Game &amp; App Developer</strong>
+            <span class="muted">Jan 2026 – Present</span>
+          </div>
+          <div class="job">
+            <span style="color:#2563d2;font-weight:700">Toba Tech</span>
+            <span class="muted">India</span>
+          </div>
+          <ul>
+            <li>Grew game audience from zero to <strong>300K+ users</strong>, achieving <strong>Top 10 genre ranking</strong> on both iOS &amp; Android through ASO, A/B tested paywalls, and staged rollouts.</li>
+            <li>Architected cyclic multi-agent graphs via <strong>LangGraph</strong> with persistent state checkpoints, <strong>MCP</strong> tool servers, and automated eval harnesses using LangSmith with LLM-as-a-judge CI/CD gates.</li>
+            <li>Deployed self-hosted <strong>vLLM</strong> inference on RunPod/Vast.ai with speculative decoding &amp; prompt caching; built trace extraction pipelines for continuous <strong>QLoRA/PEFT</strong> fine-tuning.</li>
+            <li>Shipped production casual, idle, puzzler, and runner titles in <strong>Unity (C#)</strong> and gamified apps in <strong>Flutter/Flame</strong> with complete ecosystems (tutorials, daily rewards, leaderboards, IAP, UGUI).</li>
+            <li>Managed hybrid monetization: <strong>Firebase Analytics</strong>, Remote Config A/B tests, ad mediation (AdMob, AppLovin, Unity Ads), IAP funnels, and Crashlytics/Sentry across the 300K+ user base.</li>
+            <li>Owned full cross-platform rollout: Web, iOS (Xcode/TestFlight), Android (Play Console), Fastlane automation, GitHub Actions CI/CD, and dynamic color theming pipelines.</li>
+          </ul>
+
+          <div class="job">
+            <strong>Unity &amp; Real-Time Systems Developer</strong>
+            <span class="muted">Nov 2024 – Dec 2025</span>
+          </div>
+          <div class="job">
+            <span style="color:#2563d2;font-weight:700">Carina Softlabs</span>
+            <span class="muted">India</span>
+          </div>
+          <ul>
+            <li>Shipped an MMORPG, 2.5D platformer, and mobile titles; architected authoritative headless servers on AWS via <strong>Mirror Networking</strong> with lag compensation for <strong>50+ CCU</strong>.</li>
+            <li>Designed scalable AWS backend (EC2, auto-scaling) for zero-downtime under traffic spikes; reduced memory by <strong>35%</strong> and build size by <strong>40%</strong> via Addressables.</li>
+            <li>Profiled shaders (HLSL) and draw calls via <strong>RenderDoc &amp; Unity Profiler</strong>, locking <strong>60 FPS</strong> on low-tier mobile hardware.</li>
+          </ul>
+
+          <div class="job">
+            <strong>Systems Developer (Contract)</strong>
+            <span class="muted">Aug – Sep 2024</span>
+          </div>
+          <div class="job">
+            <span style="color:#2563d2;font-weight:700">Ingenuity Gaming</span>
+            <span class="muted">Remote</span>
+          </div>
+          <ul>
+            <li>Built deterministic 2D game loops, state machines, and payout engines in C#; cut memory 25% via object pooling.</li>
+          </ul>
+
+          <div class="job">
+            <strong>XR Systems Intern</strong>
+            <span class="muted">Aug – Sep 2023</span>
+          </div>
+          <div class="job">
+            <span style="color:#2563d2;font-weight:700">AIVARSE</span>
+            <span class="muted">India</span>
+          </div>
+          <ul>
+            <li>Built XR prototypes with OpenXR &amp; Meta Quest SDK; optimized rendering to sustain <strong>72+ FPS</strong> on standalone headsets.</li>
+          </ul>
+
+          <div class="band">Personal Projects</div>
+
+          <div class="job">
+            <strong>Open-World 64-Player Multiplayer RPG</strong>
+            <span class="muted">2024 – 2025</span>
+          </div>
+          <p class="muted" style="font-style:italic;margin-bottom:4px">UE5 (C++), GAS, Niagara, Steamworks, AWS EC2</p>
+          <ul>
+            <li>Open-world RPG with GAS attribute replication, AI behavior trees, vehicle physics, and 64-player dedicated servers.</li>
+          </ul>
+
+          <div class="job">
+            <strong>Eisen Engine — AI-Native C++ Game Engine</strong>
+            <span class="muted">2025 – Present</span>
+          </div>
+          <p class="muted" style="font-style:italic;margin-bottom:4px">C/C++, Vulkan, GLSL, ECS, Custom Allocators</p>
+          <ul>
+            <li>Custom engine from scratch with Vulkan rendering, AI-native subsystems for procedural gen and runtime LLM integration.</li>
+          </ul>
+
+          <div class="job">
+            <strong>Hermes Agent — Skills, Graphify &amp; Desktop IDE</strong>
+            <span class="muted">2026</span>
+          </div>
+          <p class="muted" style="font-style:italic;margin-bottom:4px">Python, Electron, Graphify, MCP, Skills</p>
+          <ul>
+            <li>Extended Hermes with extra skills, wired <strong>Graphify</strong> for codebase query and code search, and added the Electron desktop IDE so the agent can search, plan, and edit in one loop.</li>
+          </ul>
+
+          <div class="job">
+            <strong>Agentic Marketing Agency</strong>
+            <span class="muted">2026</span>
+          </div>
+          <p class="muted" style="font-style:italic;margin-bottom:4px">LangGraph, FastAPI, Pydantic, MongoDB</p>
+          <ul>
+            <li>Six-agent LangGraph pipeline (research → strategy → copy → QA → forecast → publish) with isolated tools and brand memory.</li>
+          </ul>
+
+          <div class="job">
+            <strong>Autonomous AI Research Agents</strong>
+            <span class="muted">2026</span>
+          </div>
+          <p class="muted" style="font-style:italic;margin-bottom:4px">Python, LangGraph, MCP, vLLM, LoRA/PEFT, Docker</p>
+          <ul>
+            <li>24/7 research agents with LangGraph, MCP tools, and trace extraction for literature mining &amp; LoRA dataset distillation.</li>
+          </ul>
+
+          <div class="job">
+            <strong>AI-Powered Technical Blog</strong>
+            <span class="muted">2026</span>
+          </div>
+          <p class="muted" style="font-style:italic;margin-bottom:4px">Next.js, MDX, GenAI Pipelines, DEV.to API</p>
+          <ul>
+            <li>AI agents that research, draft, fact-check, and auto-publish deep-dive technical articles.</li>
+          </ul>
+        </div>
+
+        <aside class="side">
+          <div class="band">Contact</div>
+          <p><strong>Location:</strong> Udaipur, India</p>
+          <p><strong>Phone:</strong> +91-8290529725</p>
+          <p><strong>Email:</strong> <a href="mailto:shubhanshu200425@gmail.com">shubhanshu200425@gmail.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/shubhanshushrimali">shubhanshushrimali</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shubhanshu-shrimali-06726823b">in/shubhanshushrimali</a></p>
+          <p><strong>Medium:</strong> <a href="https://medium.com/@shubhanshu200425">@shubhanshu200425</a></p>
+          <p><strong>DEV.to:</strong> <a href="https://dev.to/shubhanshu_shrimali">shubhanshu_shrimali</a></p>
+          <p><strong>Portfolio:</strong> <a href="https://shubhanshushrimali.github.io/">shubhanshushrimali.dev</a></p>
+
+          <div class="band">Languages</div>
+          <p>C · C++ · C# · Python · Dart · Swift</p>
+
+          <div class="band">AI &amp; Agentic Systems</div>
+          <ul>
+            <li>LangGraph Cyclic StateGraphs</li>
+            <li>24/7 Daemon Agent Loops</li>
+            <li>Model Context Protocol (MCP)</li>
+            <li>Hermes skills &amp; Desktop IDE</li>
+            <li>Graphify query &amp; code search</li>
+            <li>Eval Harness &amp; LLM-as-Judge</li>
+            <li>Trace Extraction Pipelines</li>
+            <li>vLLM &amp; Speculative Decoding</li>
+            <li>Prompt Cache &amp; Token Opt.</li>
+            <li>LoRA / QLoRA Fine-Tuning</li>
+            <li>Constrained JSON (Outlines)</li>
+            <li>RunPod / Vast.ai GPU Clusters</li>
+          </ul>
+
+          <div class="band">App Growth &amp; Monetization</div>
+          <ul>
+            <li>300K+ Users, Top 10 Genre</li>
+            <li>Firebase Analytics &amp; RemoteConfig</li>
+            <li>A/B Testing &amp; Feature Flags</li>
+            <li>Ad Mediation (AdMob/AppLovin)</li>
+            <li>IAP Funnels &amp; ASO</li>
+            <li>Crashlytics / Sentry</li>
+          </ul>
+
+          <div class="band">Engines &amp; Frameworks</div>
+          <ul>
+            <li>Unreal Engine 5 (C++, GAS)</li>
+            <li>Unity (C#, DOTS/ECS, UGUI)</li>
+            <li>Custom C++ Engine (Eisen)</li>
+            <li>Flutter / Flame / React Native</li>
+            <li>HLSL / GLSL / Niagara VFX</li>
+            <li>AWS Dedicated Game Servers</li>
+            <li>FastAPI / Node.js / Docker</li>
+          </ul>
+
+          <div class="band">Platforms &amp; Tooling</div>
+          <ul>
+            <li>Xcode / Swift / TestFlight</li>
+            <li>Android Studio / Play Console</li>
+            <li>Antigravity IDE / Cursor</li>
+            <li>Electron (Hermes Desktop IDE)</li>
+            <li>GitHub Actions / Fastlane</li>
+            <li>RenderDoc &amp; Unity Profiler</li>
+            <li>Git / Perforce / Linux</li>
+          </ul>
+
+          <div class="band">Education</div>
+          <p><strong>B.Tech in Computer Science</strong></p>
+          <p class="muted">Geetanjali Inst. of Tech (GITS)</p>
+          <p>CGPA: 8.3 / 10.0 · 2021–2025</p>
+
+          <div class="band">Honors</div>
+          <ul>
+            <li>International Black Belt (Karate)</li>
+            <li>State-Level Swimmer &amp; NCC</li>
+          </ul>
+        </aside>
+      </div>
+    </article>
+  </body>
+</html>
