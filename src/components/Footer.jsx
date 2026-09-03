@@ -19,19 +19,19 @@ export default function Footer() {
         </div>
 
         <div className="footer__socials">
-          <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <a href={PROFILE.github} target="_blank" rel="me noopener noreferrer" aria-label={`${PROFILE.name} on GitHub`}>
             <FiGithub aria-hidden="true" />
           </a>
-          <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href={PROFILE.linkedin} target="_blank" rel="me noopener noreferrer" aria-label={`${PROFILE.name} on LinkedIn`}>
             <FiLinkedin aria-hidden="true" />
           </a>
-          <a href={PROFILE.devto} target="_blank" rel="noopener noreferrer" aria-label="DEV.to">
+          <a href={PROFILE.devto} target="_blank" rel="me noopener noreferrer" aria-label={`${PROFILE.name} on DEV.to`}>
             <SiDevdotto aria-hidden="true" />
           </a>
-          <a href={PROFILE.medium} target="_blank" rel="noopener noreferrer" aria-label="Medium">
+          <a href={PROFILE.medium} target="_blank" rel="me noopener noreferrer" aria-label={`${PROFILE.name} on Medium`}>
             <SiMedium aria-hidden="true" />
           </a>
-          <a href={`mailto:${PROFILE.email}`} aria-label="Email">
+          <a href={`mailto:${PROFILE.email}`} rel="me" aria-label={`Email ${PROFILE.name}`}>
             <FiMail aria-hidden="true" />
           </a>
         </div>

@@ -47,8 +47,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
-          {PROFILE.firstName.toUpperCase()}{' '}
-          <span className="gradient-text">{PROFILE.lastName.toUpperCase()}</span>
+          {PROFILE.firstName}{' '}
+          <span className="gradient-text">{PROFILE.lastName}</span>
         </motion.h1>
 
         <motion.div
@@ -73,7 +73,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <strong>{PROFILE.title}.</strong> {HERO.description}
+          <strong>{PROFILE.name}</strong> is an {PROFILE.title} {HERO.description}
         </motion.p>
 
         <motion.div
@@ -116,19 +116,19 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.05 }}
         >
-          <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" className="hero__social-link" title="GitHub">
+          <a href={PROFILE.github} target="_blank" rel="me noopener noreferrer" className="hero__social-link" title="GitHub" aria-label={`${PROFILE.name} on GitHub`}>
             <FiGithub aria-hidden="true" />
           </a>
-          <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" className="hero__social-link" title="LinkedIn">
+          <a href={PROFILE.linkedin} target="_blank" rel="me noopener noreferrer" className="hero__social-link" title="LinkedIn" aria-label={`${PROFILE.name} on LinkedIn`}>
             <FiLinkedin aria-hidden="true" />
           </a>
-          <a href={PROFILE.devto} target="_blank" rel="noopener noreferrer" className="hero__social-link" title="DEV.to">
+          <a href={PROFILE.devto} target="_blank" rel="me noopener noreferrer" className="hero__social-link" title="DEV.to" aria-label={`${PROFILE.name} on DEV.to`}>
             <SiDevdotto aria-hidden="true" />
           </a>
-          <a href={PROFILE.medium} target="_blank" rel="noopener noreferrer" className="hero__social-link" title="Medium">
+          <a href={PROFILE.medium} target="_blank" rel="me noopener noreferrer" className="hero__social-link" title="Medium" aria-label={`${PROFILE.name} on Medium`}>
             <SiMedium aria-hidden="true" />
           </a>
-          <a href={`mailto:${PROFILE.email}`} className="hero__social-link" title="Email">
+          <a href={`mailto:${PROFILE.email}`} rel="me" className="hero__social-link" title="Email" aria-label={`Email ${PROFILE.name}`}>
             <FiMail aria-hidden="true" />
           </a>
           <a href={PROFILE.phoneHref} className="hero__social-link" title="Phone">

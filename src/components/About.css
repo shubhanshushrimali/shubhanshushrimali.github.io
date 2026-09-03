@@ -313,8 +313,44 @@
   flex-shrink: 0;
 }
 
+.about__faq {
+  margin-top: 2.5rem;
+  padding: var(--space-8) var(--space-10);
+}
+
+.about__faq-title {
+  font-size: 1.45rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.about__faq-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2rem;
+  margin: 0;
+}
+
+.about__faq-item dt {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin-bottom: 0.4rem;
+}
+
+.about__faq-item dd {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
 @media (max-width: 950px) {
   .about__top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__faq-list {
     grid-template-columns: 1fr;
   }
 }
@@ -326,6 +362,10 @@
   }
 
   .about__tab-panel {
+    padding: var(--space-6);
+  }
+
+  .about__faq {
     padding: var(--space-6);
   }
 

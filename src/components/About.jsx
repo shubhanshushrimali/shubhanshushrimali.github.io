@@ -11,7 +11,7 @@ import {
   FiCheckCircle,
   FiZap,
 } from 'react-icons/fi'
-import { EDUCATION, HONORS, LANGUAGES, SKILL_CATEGORIES } from '../data/site'
+import { EDUCATION, FAQ, HONORS, LANGUAGES, PROFILE, SKILL_CATEGORIES } from '../data/site'
 import './About.css'
 
 const tabIcons = {
@@ -36,10 +36,11 @@ export default function About() {
         >
           <span className="section-number">01. Profile</span>
           <h2>
-            Games, engines, <span className="gradient-text">and agents</span>
+            About <span className="gradient-text">{PROFILE.name}</span>
           </h2>
           <p>
-            Production titles to 300K+ users, custom C++/Vulkan, UE5 netcode — plus LangGraph, Hermes, Graphify, and vLLM.
+            {PROFILE.name} is an {PROFILE.title} in {PROFILE.location}. Production titles to 300K+ users,
+            custom C++/Vulkan, UE5 netcode — plus LangGraph, Hermes, Graphify, and vLLM.
           </p>
           <div className="section-line" />
         </motion.div>
@@ -57,7 +58,7 @@ export default function About() {
             </div>
 
             <p>
-              I build real-time games and the agent systems around them. Titles shipped to{' '}
+              {PROFILE.name} builds real-time games and the agent systems around them. Titles shipped to{' '}
               <strong>300,000+ players</strong> with <strong>Top 10 rankings on iOS &amp; Android</strong>,
               a custom engine in <strong>C++ / Vulkan</strong>, and 64-player dedicated servers.
             </p>
@@ -183,6 +184,23 @@ export default function About() {
               </div>
             ))}
           </div>
+        </motion.div>
+
+        <motion.div
+          className="about__faq glass-card"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <h3 className="about__faq-title font-heading">Who is {PROFILE.name}?</h3>
+          <dl className="about__faq-list">
+            {FAQ.map((item) => (
+              <div key={item.q} className="about__faq-item">
+                <dt>{item.q}</dt>
+                <dd>{item.a}</dd>
+              </div>
+            ))}
+          </dl>
         </motion.div>
       </div>
     </section>

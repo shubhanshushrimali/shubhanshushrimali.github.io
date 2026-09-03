@@ -1,0 +1,16 @@
+/* TEAM */
+
+Name: Shubhanshu Shrimali
+Role: AI-Native Systems & Game Engineer
+Location: Udaipur, Rajasthan, India
+Site: https://shubhanshushrimali.github.io/
+GitHub: https://github.com/shubhanshushrimali
+LinkedIn: https://www.linkedin.com/in/shubhanshu-shrimali-06726823b
+Contact: shubhanshu200425@gmail.com
+
+/* SITE */
+
+Standards: HTML5, Schema.org Person / ProfilePage / FAQPage, llms.txt
+Language: English
+Doctype: HTML5
+Components: React, Vite, GitHub Pages

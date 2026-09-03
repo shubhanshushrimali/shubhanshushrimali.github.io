@@ -16,11 +16,30 @@ export const PROFILE = {
   resumeHref: '/resume.html',
 }
 
+export const FAQ = [
+  {
+    q: 'Who is Shubhanshu Shrimali?',
+    a: 'Shubhanshu Shrimali is an AI-Native Systems and Game Engineer based in Udaipur, Rajasthan, India. He ships production games and apps to 300,000+ users with Top 10 genre rankings on iOS and Android, and builds agent systems with LangGraph, Hermes, Graphify, and self-hosted vLLM.',
+  },
+  {
+    q: 'What does Shubhanshu Shrimali work on?',
+    a: 'He currently works as an AI Systems Engineer, Game & App Developer at Toba Tech. His work includes Eisen Engine (C++ / Vulkan), Unreal Engine 5 64-player netcode, Hermes Agent with Graphify search, LangGraph multi-agent systems, and self-hosted vLLM inference.',
+  },
+  {
+    q: 'Where is Shubhanshu Shrimali based?',
+    a: 'Udaipur, Rajasthan, India. B.Tech in Computer Science from Geetanjali Institute of Technical Studies (GITS), 2021–2025.',
+  },
+  {
+    q: 'How can I contact Shubhanshu Shrimali?',
+    a: 'Email shubhanshu200425@gmail.com, or find him on GitHub, LinkedIn, Medium, and DEV.to. Official site: https://shubhanshushrimali.github.io/',
+  },
+]
+
 export const HERO = {
   status: 'AI + GAMES ONLINE · 300K+ USERS · TOP 10 · LANGGRAPH · HERMES · VLLM',
   greeting: '> init engineer_profile --name',
   description:
-    'I ship production games and apps to 300K+ users (Top 10 on iOS & Android), and I build the agent stack behind them — LangGraph, MCP, Hermes skills + Graphify search + desktop IDE, and self-hosted vLLM. Also Eisen Engine, UE5 netcode, and an agentic marketing agency from GitHub.',
+    'based in Udaipur, India. I ship production games and apps to 300K+ users (Top 10 on iOS & Android), and I build the agent stack behind them — LangGraph, MCP, Hermes skills + Graphify search + desktop IDE, and self-hosted vLLM. Also Eisen Engine, UE5 netcode, and an agentic marketing agency from GitHub.',
   sequences: [
     'Shipped production games to 300K+ users (Top 10)',
     2400,

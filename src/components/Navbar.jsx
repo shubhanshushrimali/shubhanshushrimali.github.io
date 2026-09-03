@@ -68,6 +68,8 @@ export default function Navbar({ onOpenCmd, isOverclocked }) {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => soundFX.playClick()}
+          aria-label={PROFILE.name}
+          title={PROFILE.name}
         >
           <span className="navbar__logo-bracket mono">&lt;</span>
           SS

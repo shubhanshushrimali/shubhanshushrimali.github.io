@@ -1,0 +1,34 @@
+{
+  "name": "Shubhanshu Shrimali",
+  "short_name": "Shrimali",
+  "description": "Official site of Shubhanshu Shrimali — AI-Native Systems & Game Engineer. 300K+ users, Eisen Engine, UE5, LangGraph, Hermes, Graphify, vLLM.",
+  "id": "https://shubhanshushrimali.github.io/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08090d",
+  "theme_color": "#08090d",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["portfolio", "developer"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    }
+  ]
+}
