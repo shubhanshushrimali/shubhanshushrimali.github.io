@@ -19,7 +19,7 @@
 
 .navbar--overclock {
   border-bottom: 1px solid var(--accent-gold) !important;
-  box-shadow: 0 0 25px rgba(201, 165, 90, 0.25) !important;
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.25) !important;
 }
 
 .navbar__container {
@@ -67,7 +67,7 @@
   background: var(--gradient-cyber);
   border-radius: 1px;
   transition: width 0.3s ease;
-  box-shadow: 0 0 10px rgba(201, 165, 90, 0.5);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
 }
 
 .navbar__link:hover,
@@ -108,21 +108,21 @@
 }
 
 .navbar__action-btn:hover {
-  background: rgba(201, 165, 90, 0.08);
+  background: rgba(34, 197, 94, 0.08);
   border-color: var(--accent-gold);
   color: var(--accent-gold);
 }
 
 .navbar__action-btn--active {
-  background: rgba(90, 138, 108, 0.12) !important;
+  background: rgba(16, 185, 129, 0.12) !important;
   border-color: var(--accent-sage) !important;
   color: var(--accent-sage) !important;
-  box-shadow: 0 0 15px rgba(90, 138, 108, 0.2);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
 }
 
 .navbar__cmd-btn {
-  background: rgba(201, 165, 90, 0.05);
-  border-color: rgba(201, 165, 90, 0.25);
+  background: rgba(34, 197, 94, 0.05);
+  border-color: rgba(34, 197, 94, 0.25);
 }
 
 .cmd-badge {

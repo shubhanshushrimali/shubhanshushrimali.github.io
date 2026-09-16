@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   FiCpu,
   FiTrendingUp,
@@ -12,6 +11,7 @@ import {
   FiZap,
 } from 'react-icons/fi'
 import { EDUCATION, FAQ, HONORS, LANGUAGES, PROFILE, SKILL_CATEGORIES } from '../data/site'
+import ScrollReveal, { StaggerContainer, StaggerItem } from './ScrollReveal'
 import './About.css'
 
 const tabIcons = {
@@ -23,17 +23,11 @@ const tabIcons = {
 
 export default function About() {
   const [activeTab, setActiveTab] = useState('engines')
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
-    <section className="about" id="about" ref={ref}>
+    <section className="about" id="about">
       <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+        <ScrollReveal className="section-header">
           <span className="section-number">01. Profile</span>
           <h2>
             About <span className="gradient-text">{PROFILE.name}</span>
@@ -43,15 +37,10 @@ export default function About() {
             custom C++/Vulkan, UE5 netcode — plus LangGraph, Hermes, Graphify, and vLLM.
           </p>
           <div className="section-line" />
-        </motion.div>
+        </ScrollReveal>
 
         <div className="about__top-grid">
-          <motion.div
-            className="about__bio-card glass-card"
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
+          <ScrollReveal variant="fade-left" delay={0.15} className="about__bio-card glass-card">
             <div className="about__bio-header">
               <FiCode className="about__bio-icon" aria-hidden="true" />
               <h3>AI-Native Systems & Game Engineer</h3>
@@ -81,14 +70,9 @@ export default function About() {
                 <FiLayers aria-hidden="true" /> Hermes + Graphify
               </span>
             </div>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div
-            className="about__side-cards"
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.25 }}
-          >
+          <ScrollReveal variant="fade-right" delay={0.25} className="about__side-cards">
             <div className="about__edu-card glass-card">
               <div className="about__side-header">
                 <span className="about__side-badge mono">Education</span>
@@ -116,15 +100,10 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
 
-        <motion.div
-          className="about__languages-strip glass-card"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.35 }}
-        >
+        <ScrollReveal delay={0.35} className="about__languages-strip glass-card">
           <span className="about__strip-title mono">&gt; LANGUAGES:</span>
           <div className="about__languages-grid">
             {LANGUAGES.map((lang) => (
@@ -135,14 +114,9 @@ export default function About() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </ScrollReveal>
 
-        <motion.div
-          className="about__matrix"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.45 }}
-        >
+        <ScrollReveal delay={0.45} className="about__matrix">
           <div className="about__tabs" role="tablist" aria-label="Skill categories">
             {SKILL_CATEGORIES.map((cat) => (
               <button
@@ -161,37 +135,41 @@ export default function About() {
           </div>
 
           <div className="about__tab-panel glass-card">
-            {SKILL_CATEGORIES.filter((c) => c.id === activeTab).map((category) => (
-              <div key={category.id} className="about__skills-showcase">
-                <div className="about__skills-showcase-header">
-                  <h3 className="font-heading">{category.name}</h3>
-                  <span className="hud-badge mono">PRODUCTION</span>
-                </div>
-                <div className="about__skill-pills-grid">
-                  {category.skills.map((skill, idx) => (
-                    <motion.div
-                      key={skill}
-                      className="about__skill-pill"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: idx * 0.04 }}
-                    >
-                      <FiCheckCircle className="about__pill-check" aria-hidden="true" />
-                      <span>{skill}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ))}
+            <AnimatePresence mode="wait">
+              {SKILL_CATEGORIES.filter((c) => c.id === activeTab).map((category) => (
+                <motion.div
+                  key={category.id}
+                  className="about__skills-showcase"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="about__skills-showcase-header">
+                    <h3 className="font-heading">{category.name}</h3>
+                    <span className="hud-badge mono">PRODUCTION</span>
+                  </div>
+                  <div className="about__skill-pills-grid">
+                    {category.skills.map((skill, idx) => (
+                      <motion.div
+                        key={skill}
+                        className="about__skill-pill"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.25, delay: idx * 0.03 }}
+                      >
+                        <FiCheckCircle className="about__pill-check" aria-hidden="true" />
+                        <span>{skill}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
-        </motion.div>
+        </ScrollReveal>
 
-        <motion.div
-          className="about__faq glass-card"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
+        <ScrollReveal delay={0.5} className="about__faq glass-card">
           <h3 className="about__faq-title font-heading">Who is {PROFILE.name}?</h3>
           <dl className="about__faq-list">
             {FAQ.map((item) => (
@@ -201,7 +179,7 @@ export default function About() {
               </div>
             ))}
           </dl>
-        </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   )

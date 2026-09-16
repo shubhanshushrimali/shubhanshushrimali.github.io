@@ -3,6 +3,7 @@ import './index.css'
 import './styles/cinematic.css'
 import {
   useScrollAnimations,
+  useSectionLineAnimations,
   useSmoothScroll,
   useScrollProgress
 } from './hooks/useCinematicEngine'
@@ -42,25 +43,13 @@ function App() {
   const [isCmdOpen, setIsCmdOpen] = useState(false)
   const [isOverclocked, setIsOverclocked] = useState(false)
 
+  // Cinematic engine hooks (GSAP-free)
   useScrollAnimations()
+  useSectionLineAnimations()
   useSmoothScroll()
   useScrollProgress()
 
-  useEffect(() => {
-    const handleCardMouse = (e) => {
-      const card = e.currentTarget
-      const rect = card.getBoundingClientRect()
-      const x = ((e.clientX - rect.left) / rect.width) * 100
-      const y = ((e.clientY - rect.top) / rect.height) * 100
-      card.style.setProperty('--mouse-x', `${x}%`)
-      card.style.setProperty('--mouse-y', `${y}%`)
-    }
-
-    const cards = document.querySelectorAll('.glass-card')
-    cards.forEach(c => c.addEventListener('mousemove', handleCardMouse))
-    return () => cards.forEach(c => c.removeEventListener('mousemove', handleCardMouse))
-  }, [])
-
+  // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -76,6 +65,7 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
+  // Konami code → overclock mode
   useEffect(() => {
     const konamiCode = [
       'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',

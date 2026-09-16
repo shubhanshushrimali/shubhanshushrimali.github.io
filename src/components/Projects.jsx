@@ -1,24 +1,16 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 import { FiGithub, FiExternalLink, FiTerminal, FiCheck } from 'react-icons/fi'
 import EisenEngineViewport from './EisenEngineViewport'
 import AgentGraphVisualizer from './AgentGraphVisualizer'
 import { PROJECTS } from '../data/site'
 import { soundFX } from '../utils/audio'
+import ScrollReveal, { StaggerContainer, StaggerItem } from './ScrollReveal'
 import './Projects.css'
 
 export default function Projects() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
-
   return (
-    <section className="projects" id="projects" ref={ref}>
+    <section className="projects" id="projects">
       <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+        <ScrollReveal className="section-header" variant="fade-up">
           <span className="section-number">02. Selected work</span>
           <h2>
             Games, engines, <span className="gradient-text">agents</span>
@@ -27,16 +19,13 @@ export default function Projects() {
             Eisen Engine, 64-player UE5 netcode, Hermes + Graphify + desktop IDE, an agentic marketing agency, research agents, and the publishing pipeline.
           </p>
           <div className="section-line" />
-        </motion.div>
+        </ScrollReveal>
 
-        <div className="projects__showcase-list">
-          {PROJECTS.map((project, idx) => (
-            <motion.div
+        <StaggerContainer className="projects__showcase-list" delay={0.1}>
+          {PROJECTS.map((project) => (
+            <StaggerItem
               key={project.id}
               className={`project-featured-card glass-card ${project.featured ? 'project-featured-card--major' : ''}`}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: idx * 0.12 }}
             >
               <div className="project-featured-card__info">
                 <div className="project-featured-card__top">
@@ -122,9 +111,9 @@ export default function Projects() {
                   <AgentGraphVisualizer />
                 </div>
               )}
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   )

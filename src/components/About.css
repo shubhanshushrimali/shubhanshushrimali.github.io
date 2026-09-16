@@ -177,8 +177,8 @@
 }
 
 .about__lang-item:hover {
-  background: rgba(201, 165, 90, 0.05);
-  border-color: rgba(201, 165, 90, 0.3);
+  background: rgba(34, 197, 94, 0.05);
+  border-color: rgba(34, 197, 94, 0.3);
   transform: translateY(-2px);
 }
 
@@ -234,16 +234,16 @@
 }
 
 .about__tab-btn:hover {
-  background: rgba(201, 165, 90, 0.08);
+  background: rgba(34, 197, 94, 0.08);
   color: var(--text-primary);
-  border-color: rgba(201, 165, 90, 0.3);
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
 .about__tab-btn--active {
-  background: linear-gradient(135deg, rgba(201, 165, 90, 0.15), rgba(124, 111, 160, 0.15));
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(139, 92, 246, 0.15));
   color: var(--accent-gold);
   border-color: var(--accent-gold);
-  box-shadow: 0 0 20px rgba(201, 165, 90, 0.2);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
 }
 
 .about__tab-icon {
@@ -259,7 +259,7 @@
 }
 
 .about__tab-btn--active .about__tab-pill {
-  background: rgba(201, 165, 90, 0.15);
+  background: rgba(34, 197, 94, 0.15);
   color: var(--accent-gold);
 }
 
@@ -302,8 +302,8 @@
 }
 
 .about__skill-pill:hover {
-  background: rgba(201, 165, 90, 0.06);
-  border-color: rgba(201, 165, 90, 0.3);
+  background: rgba(34, 197, 94, 0.06);
+  border-color: rgba(34, 197, 94, 0.3);
   transform: translateX(4px);
 }
 

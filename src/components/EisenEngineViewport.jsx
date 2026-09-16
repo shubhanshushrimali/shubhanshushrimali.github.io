@@ -28,11 +28,11 @@ function VulkanWireframeMesh({ isPaused }) {
     <group scale={1.6}>
       <mesh ref={meshRef}>
         <octahedronGeometry args={[1.5, 2]} />
-        <meshBasicMaterial color="#00f0ff" wireframe transparent opacity={0.7} />
+        <meshBasicMaterial color="#38BDF8" wireframe transparent opacity={0.7} />
       </mesh>
       <mesh ref={innerRef}>
         <dodecahedronGeometry args={[0.9, 0]} />
-        <meshBasicMaterial color="#ec4899" wireframe transparent opacity={0.5} />
+        <meshBasicMaterial color="#22C55E" wireframe transparent opacity={0.5} />
       </mesh>
     </group>
   )
@@ -61,8 +61,8 @@ function QuantumCoreMesh({ isPaused }) {
       <mesh ref={torusRef}>
         <torusKnotGeometry args={[1, 0.28, 128, 32]} />
         <meshStandardMaterial
-          color="#a855f7"
-          emissive="#38bdf8"
+          color="#8B5CF6"
+          emissive="#38BDF8"
           emissiveIntensity={0.6}
           roughness={0.2}
           metalness={0.8}
@@ -71,7 +71,7 @@ function QuantumCoreMesh({ isPaused }) {
       </mesh>
       <mesh ref={torusRef2}>
         <torusGeometry args={[1.8, 0.02, 16, 100]} />
-        <meshBasicMaterial color="#00f0ff" />
+        <meshBasicMaterial color="#38BDF8" />
       </mesh>
     </group>
   )
@@ -85,9 +85,9 @@ function KineticParticleVortex({ isPaused }) {
   const [positions, colors] = useMemo(() => {
     const pos = new Float32Array(count * 3)
     const col = new Float32Array(count * 3)
-    const pColor1 = new THREE.Color('#00f0ff')
-    const pColor2 = new THREE.Color('#a855f7')
-    const pColor3 = new THREE.Color('#f59e0b')
+    const pColor1 = new THREE.Color('#38BDF8')
+    const pColor2 = new THREE.Color('#8B5CF6')
+    const pColor3 = new THREE.Color('#22C55E')
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3
@@ -196,10 +196,10 @@ export default function EisenEngineViewport() {
 
       {/* 3D Viewport Screen */}
       <div className="eisen-viewport__canvas-wrap">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }} style={{ background: '#050711' }}>
+        <Canvas camera={{ position: [0, 0, 5], fov: 50 }} style={{ background: 'transparent' }}>
           <ambientLight intensity={0.7} />
-          <pointLight position={[10, 10, 10]} intensity={1.5} color="#00f0ff" />
-          <pointLight position={[-10, -10, -10]} intensity={1.2} color="#a855f7" />
+          <pointLight position={[10, 10, 10]} intensity={1.5} color="#38BDF8" />
+          <pointLight position={[-10, -10, -10]} intensity={1.2} color="#8B5CF6" />
 
           {renderMode === 'vulkan' && <VulkanWireframeMesh isPaused={isPaused} />}
           {renderMode === 'quantum' && <QuantumCoreMesh isPaused={isPaused} />}

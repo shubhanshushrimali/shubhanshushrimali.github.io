@@ -12,6 +12,55 @@ import { SiMedium, SiDevdotto } from 'react-icons/si'
 import { PROFILE, HERO } from '../data/site'
 import './Hero.css'
 
+/* ─── Coordinated stagger entrance ─── */
+const container = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+const fadeUpSpring = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 80, damping: 20 },
+  },
+}
+
+/* Text reveal: clip-path wipe from bottom */
+const textReveal = {
+  hidden: {
+    opacity: 0,
+    clipPath: 'inset(100% 0% 0% 0%)',
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    clipPath: 'inset(0% 0% 0% 0%)',
+    y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
+}
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.8 },
+  },
+}
+
 const metricClass = {
   gold: 'gradient-text-gold',
   steel: 'gradient-text',
@@ -21,42 +70,27 @@ const metricClass = {
 export default function Hero() {
   return (
     <section className="hero" id="hero">
-      <div className="container hero__content">
-        <motion.div
-          className="hero__hud-status"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+      <motion.div
+        className="hero__content"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div className="hero__hud-status" variants={fadeUp}>
           <span className="pulse-dot"></span>
           <span className="hero__hud-text mono">{HERO.status}</span>
         </motion.div>
 
-        <motion.p
-          className="hero__greeting mono"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-        >
+        <motion.p className="hero__greeting mono" variants={fadeUp}>
           {HERO.greeting}
         </motion.p>
 
-        <motion.h1
-          className="hero__name font-heading"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
+        <motion.h1 className="hero__name font-heading" variants={textReveal}>
           {PROFILE.firstName}{' '}
           <span className="gradient-text">{PROFILE.lastName}</span>
         </motion.h1>
 
-        <motion.div
-          className="hero__tagline"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-        >
+        <motion.div className="hero__tagline" variants={fadeUp}>
           <span className="hero__tagline-prefix mono">&gt; specialization: </span>
           <TypeAnimation
             sequence={HERO.sequences}
@@ -67,37 +101,32 @@ export default function Hero() {
           />
         </motion.div>
 
-        <motion.p
-          className="hero__description"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
+        <motion.p className="hero__description" variants={fadeUp}>
           <strong>{PROFILE.name}</strong> is an {PROFILE.title} {HERO.description}
         </motion.p>
 
-        <motion.div
-          className="hero__metrics-grid"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.75 }}
-        >
-          {HERO.metrics.map((metric) => (
-            <div key={metric.label} className="hero__metric-card glass-card">
+        <motion.div className="hero__metrics-grid" variants={fadeUpSpring}>
+          {HERO.metrics.map((metric, i) => (
+            <motion.div
+              key={metric.label}
+              className="hero__metric-card glass-card"
+              initial={{ opacity: 0, y: 24, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                delay: 0.7 + i * 0.1,
+                duration: 0.5,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
               <span className={`hero__metric-num ${metricClass[metric.tone] || 'gradient-text'}`}>
                 {metric.num}
               </span>
               <span className="hero__metric-label mono">{metric.label}</span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
-        <motion.div
-          className="hero__actions"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-        >
+        <motion.div className="hero__actions" variants={fadeUp}>
           <a href="#projects" className="btn btn-primary">
             View agent work
             <FiArrowDown aria-hidden="true" />
@@ -110,12 +139,7 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        <motion.div
-          className="hero__socials"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.05 }}
-        >
+        <motion.div className="hero__socials" variants={fadeIn}>
           <a href={PROFILE.github} target="_blank" rel="me noopener noreferrer" className="hero__social-link" title="GitHub" aria-label={`${PROFILE.name} on GitHub`}>
             <FiGithub aria-hidden="true" />
           </a>
@@ -135,7 +159,7 @@ export default function Hero() {
             <FiPhone aria-hidden="true" />
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div
         className="hero__scroll-indicator"

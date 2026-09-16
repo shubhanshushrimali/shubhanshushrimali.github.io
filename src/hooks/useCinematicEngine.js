@@ -1,60 +1,83 @@
 import { useEffect } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 /* ═══════════════════════════════════════════════════════
-   CINEMATIC ENGINE — Lightweight Edition
-   
-   Only scroll-driven effects that don't conflict with
-   Framer Motion. No cursor, no film grain, no magnetic.
-   
+   CINEMATIC ENGINE — GSAP-Free Edition
+
+   Replaced GSAP ScrollTrigger with:
+   - CSS scroll-driven animations for hero parallax
+   - Intersection Observer for section-line draw-in
+   - Vanilla scroll listener for progress bar
+
    Respects prefers-reduced-motion.
    ═══════════════════════════════════════════════════════ */
 
-/* ─── GSAP ScrollTrigger: Hero Parallax Only ─── */
+/* ─── Hero Parallax via CSS scroll-driven animation ─── */
 export function useScrollAnimations() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const ctx = gsap.context(() => {
+    // Hero parallax: fade + translate as user scrolls past
+    const hero = document.querySelector('.hero')
+    const heroContent = document.querySelector('.hero__content')
+    if (!hero || !heroContent) return
 
-      // Hero content fades + parallax on scroll
-      const hero = document.querySelector('.hero')
-      if (hero) {
-        gsap.to('.hero__content', {
-          yPercent: 25,
-          opacity: 0.2,
-          scale: 0.96,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: hero,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 0.5,
-          }
-        })
-      }
+    let ticking = false
 
-      // Section lines: draw-in
-      gsap.utils.toArray('.section-line').forEach((line) => {
-        gsap.from(line, {
-          scaleX: 0,
-          transformOrigin: 'center center',
-          duration: 1,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: line,
-            start: 'top 90%',
-            toggleActions: 'play none none none',
-          }
-        })
+    const handleScroll = () => {
+      if (ticking) return
+      ticking = true
+
+      requestAnimationFrame(() => {
+        const rect = hero.getBoundingClientRect()
+        const heroHeight = hero.offsetHeight
+
+        if (rect.bottom > 0) {
+          const progress = Math.max(0, Math.min(1, -rect.top / heroHeight))
+          const opacity = 1 - progress * 0.8
+          const translateY = progress * 25
+          const scale = 1 - progress * 0.04
+
+          heroContent.style.opacity = opacity
+          heroContent.style.transform = `translateY(${translateY}%) scale(${scale})`
+        }
+
+        ticking = false
       })
+    }
 
-    })
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (heroContent) {
+        heroContent.style.opacity = ''
+        heroContent.style.transform = ''
+      }
+    }
+  }, [])
+}
 
-    return () => ctx.revert()
+/* ─── Section Line Draw-in via Intersection Observer ─── */
+export function useSectionLineAnimations() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const lines = document.querySelectorAll('.section-line')
+    if (!lines.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-line--visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    lines.forEach((line) => observer.observe(line))
+    return () => observer.disconnect()
   }, [])
 }
 
@@ -65,11 +88,19 @@ export function useScrollProgress() {
     bar.className = 'scroll-progress-bar'
     document.body.appendChild(bar)
 
+    let ticking = false
+
     const update = () => {
-      const scrolled = window.scrollY
-      const total = document.documentElement.scrollHeight - window.innerHeight
-      const pct = total > 0 ? (scrolled / total) * 100 : 0
-      bar.style.width = `${pct}%`
+      if (ticking) return
+      ticking = true
+
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY
+        const total = document.documentElement.scrollHeight - window.innerHeight
+        const pct = total > 0 ? (scrolled / total) * 100 : 0
+        bar.style.width = `${pct}%`
+        ticking = false
+      })
     }
 
     window.addEventListener('scroll', update, { passive: true })

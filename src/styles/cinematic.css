@@ -12,7 +12,7 @@
   width: 0%;
   z-index: 10000;
   background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-steel) 50%, var(--accent-sage) 100%);
-  box-shadow: 0 0 10px rgba(201, 165, 90, 0.4), 0 0 30px rgba(201, 165, 90, 0.15);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.15);
   transition: width 0.08s linear;
   will-change: width;
 }
@@ -26,7 +26,7 @@
     opacity: 0;
     background: radial-gradient(
       600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(201, 165, 90, 0.04) 0%,
+      rgba(34, 197, 94, 0.04) 0%,
       transparent 60%
     );
     transition: opacity 0.4s ease;

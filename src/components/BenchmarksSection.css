@@ -30,16 +30,16 @@
 }
 
 .benchmarks__tab-btn:hover {
-  background: rgba(201, 165, 90, 0.08);
+  background: rgba(34, 197, 94, 0.08);
   color: var(--text-primary);
-  border-color: rgba(201, 165, 90, 0.3);
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
 .benchmarks__tab-btn--active {
-  background: linear-gradient(135deg, rgba(201, 165, 90, 0.12), rgba(90, 138, 108, 0.12));
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(16, 185, 129, 0.12));
   color: var(--accent-gold);
   border-color: var(--accent-gold);
-  box-shadow: 0 0 20px rgba(201, 165, 90, 0.15);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
 }
 
 .bench-tab-icon {
@@ -90,13 +90,13 @@
 }
 
 .benchmark-col--before {
-  border-color: rgba(192, 94, 60, 0.25);
+  border-color: rgba(239, 68, 68, 0.25);
 }
 
 .benchmark-col--after {
-  border-color: rgba(90, 138, 108, 0.35);
-  background: linear-gradient(135deg, rgba(90, 138, 108, 0.04), rgba(201, 165, 90, 0.04));
-  box-shadow: 0 0 30px rgba(90, 138, 108, 0.08);
+  border-color: rgba(16, 185, 129, 0.35);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.04), rgba(34, 197, 94, 0.04));
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
 }
 
 .benchmark-col__tag {
@@ -172,7 +172,7 @@
 
 .benchmark-bar-fill--good {
   background: linear-gradient(90deg, var(--accent-steel), var(--accent-sage));
-  box-shadow: 0 0 10px rgba(112, 144, 176, 0.4);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
 }
 
 .benchmark-card__summary {
